@@ -1,0 +1,529 @@
+{
+    "accessors": [
+        {
+            "bufferView": 0,
+            "componentType": 5125,
+            "count": 15744,
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 1,
+            "componentType": 5126,
+            "count": 2667,
+            "max": [
+                1.0199998617172241,
+                1.0199999809265137,
+                1.0199997425079346
+            ],
+            "min": [
+                -1.0199998617172241,
+                -1.0199999809265137,
+                -1.0199998617172241
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 2,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 3,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC2"
+        },
+        {
+            "bufferView": 4,
+            "componentType": 5125,
+            "count": 15744,
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 5,
+            "componentType": 5126,
+            "count": 2667,
+            "max": [
+                1.029999852180481,
+                1.0299999713897705,
+                1.0299997329711914
+            ],
+            "min": [
+                -1.0299999713897705,
+                -1.0299999713897705,
+                -1.029999852180481
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 6,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 7,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC2"
+        },
+        {
+            "bufferView": 8,
+            "componentType": 5125,
+            "count": 15744,
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 9,
+            "componentType": 5126,
+            "count": 2667,
+            "max": [
+                1.0399998426437378,
+                1.0399999618530273,
+                1.0399997234344482
+            ],
+            "min": [
+                -1.0399998426437378,
+                -1.0399999618530273,
+                -1.0399997234344482
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 10,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 11,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC2"
+        },
+        {
+            "bufferView": 12,
+            "componentType": 5125,
+            "count": 15744,
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 13,
+            "componentType": 5126,
+            "count": 2667,
+            "max": [
+                1.0499998331069946,
+                1.0499999523162842,
+                1.049999713897705
+            ],
+            "min": [
+                -1.0499998331069946,
+                -1.0499999523162842,
+                -1.0499998331069946
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 14,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 15,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC2"
+        },
+        {
+            "bufferView": 16,
+            "componentType": 5125,
+            "count": 15744,
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 17,
+            "componentType": 5126,
+            "count": 2667,
+            "max": [
+                0.9999998807907104,
+                1,
+                0.9999998211860657
+            ],
+            "min": [
+                -0.9999999403953552,
+                -1,
+                -0.9999998211860657
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 18,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 19,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC2"
+        }
+    ],
+    "asset": {
+        "generator": "Substance Painter 2017.4.0",
+        "version": "2.0"
+    },
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteLength": 62976,
+            "byteOffset": 0,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 62976,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 94980,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 21336,
+            "byteOffset": 126984,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 62976,
+            "byteOffset": 148320,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 211296,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 243300,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 21336,
+            "byteOffset": 275304,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 62976,
+            "byteOffset": 296640,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 359616,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 391620,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 21336,
+            "byteOffset": 423624,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 62976,
+            "byteOffset": 444960,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 507936,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 539940,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 21336,
+            "byteOffset": 571944,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 62976,
+            "byteOffset": 593280,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 656256,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 688260,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 21336,
+            "byteOffset": 720264,
+            "target": 34962
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 741600,
+            "uri": "Mars.bin"
+        }
+    ],
+    "images": [
+        {
+            "uri": "Mars_Atmosphere_Mat_baseColor.png"
+        },
+        {
+            "uri": "Mars_mat_baseColor.png"
+        },
+        {
+            "uri": "Mars_mat_normal.png"
+        }
+    ],
+    "extensions": {
+      "KHR_materials_unlit": {}
+    },
+    "materials": [
+        {
+            "extensions": {
+              "KHR_materials_unlit": {}
+            },
+
+            "alphaMode": "BLEND",
+            "name": "Mars_Atmosphere_Mat",
+            "pbrMetallicRoughness": {
+                "baseColorTexture": {
+                    "index": 0
+                }
+            }
+        },
+        {
+            "alphaMode": "OPAQUE",
+            "name": "Mars_mat",
+            "normalTexture": {
+                "index": 2
+            },
+            "pbrMetallicRoughness": {
+                "baseColorTexture": {
+                    "index": 1
+                },
+                "metallicFactor": 0.33,
+                "roughnessFactor": 0.86
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "Clouds_Atmosphere_01",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 2,
+                        "POSITION": 1,
+                        "TEXCOORD_0": 3
+                    },
+                    "indices": 0,
+                    "material": 0,
+                    "mode": 4
+                }
+            ]
+        },
+        {
+            "name": "Clouds_Atmosphere_02",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 6,
+                        "POSITION": 5,
+                        "TEXCOORD_0": 7
+                    },
+                    "indices": 4,
+                    "material": 0,
+                    "mode": 4
+                }
+            ]
+        },
+        {
+            "name": "Clouds_Atmosphere_03",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 10,
+                        "POSITION": 9,
+                        "TEXCOORD_0": 11
+                    },
+                    "indices": 8,
+                    "material": 0,
+                    "mode": 4
+                }
+            ]
+        },
+        {
+            "name": "Clouds_Atmosphere_04",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 14,
+                        "POSITION": 13,
+                        "TEXCOORD_0": 15
+                    },
+                    "indices": 12,
+                    "material": 0,
+                    "mode": 4
+                }
+            ]
+        },
+        {
+            "name": "Mars",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 18,
+                        "POSITION": 17,
+                        "TEXCOORD_0": 19
+                    },
+                    "indices": 16,
+                    "material": 1,
+                    "mode": 4
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "children": [
+                1,
+                3,
+                5,
+                7,
+                9
+            ],
+            "name": "root",
+            "scale": [
+                10,
+                10,
+                10
+            ],
+            "translation": [
+                9.5367431640625e-07,
+                0,
+                9.5367431640625e-07
+            ]
+        },
+        {
+            "children": [
+                2
+            ],
+            "name": "Clouds_Atmosphere_01"
+        },
+        {
+            "mesh": 0,
+            "name": "Clouds_Atmosphere_01"
+        },
+        {
+            "children": [
+                4
+            ],
+            "name": "Clouds_Atmosphere_02"
+        },
+        {
+            "mesh": 1,
+            "name": "Clouds_Atmosphere_02"
+        },
+        {
+            "children": [
+                6
+            ],
+            "name": "Clouds_Atmosphere_03"
+        },
+        {
+            "mesh": 2,
+            "name": "Clouds_Atmosphere_03"
+        },
+        {
+            "children": [
+                8
+            ],
+            "name": "Clouds_Atmosphere_04"
+        },
+        {
+            "mesh": 3,
+            "name": "Clouds_Atmosphere_04"
+        },
+        {
+            "children": [
+                10
+            ],
+            "name": "Mars"
+        },
+        {
+            "mesh": 4,
+            "name": "Mars"
+        }
+    ],
+    "samplers": [
+        {
+            "magFilter": 9729,
+            "minFilter": 9985,
+            "wrapS": 10497,
+            "wrapT": 10497
+        }
+    ],
+    "scene": 0,
+    "scenes": [
+        {
+            "name": "Scene",
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "textures": [
+        {
+            "sampler": 0,
+            "source": 0
+        },
+        {
+            "sampler": 0,
+            "source": 1
+        },
+        {
+            "sampler": 0,
+            "source": 2
+        }
+    ]
+}

@@ -1,0 +1,201 @@
+{
+   materials: [
+      {
+         name: "SaturnPlanet_Opaque_Mat",
+         parameters: [
+            {
+               baseColorFactor: [
+                  1,
+                  1,
+                  1,
+                  1,
+               ],
+            },
+            {
+               baseColor: "SaturnPlanet_Opaque_Mat_baseColor",
+            },
+            {
+               normal: null,
+            },
+            {
+               metallicFactor: 0,
+            },
+            {
+               roughnessFactor: 0.66000000000000003,
+            },
+            {
+               metallicRoughness: null,
+            },
+            {
+               occlusion: null,
+            },
+            {
+               emissiveFactor: [
+                  0,
+                  0,
+                  0,
+                  1,
+               ],
+            },
+            {
+               emissive: null,
+            },
+            {
+               reflectance: 0.5,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/gltf_material.sfm",
+      },
+      {
+         name: "Saturn_Clouds_mat",
+         parameters: [
+            {
+               baseColorFactor: [
+                  1,
+                  1,
+                  1,
+                  1,
+               ],
+            },
+            {
+               baseColor: "Saturn_Clouds_mat_baseColor",
+            },
+            {
+               normal: null,
+            },
+            {
+               metallicFactor: 1,
+            },
+            {
+               roughnessFactor: 1,
+            },
+            {
+               metallicRoughness: null,
+            },
+            {
+               occlusion: null,
+            },
+            {
+               emissiveFactor: [
+                  0,
+                  0,
+                  0,
+                  1,
+               ],
+            },
+            {
+               emissive: null,
+            },
+            {
+               reflectance: 0.5,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/gltf_material.sfm",
+      },
+      {
+         name: "SaturnRings_Mat",
+         parameters: [
+            {
+               baseColorFactor: [
+                  1,
+                  1,
+                  1,
+                  1,
+               ],
+            },
+            {
+               baseColor: "SaturnRings_Mat_baseColor",
+            },
+            {
+               normal: null,
+            },
+            {
+               metallicFactor: 1,
+            },
+            {
+               roughnessFactor: 1,
+            },
+            {
+               metallicRoughness: "SaturnRings_Mat_occlusionRoughnessMetallic",
+            },
+            {
+               occlusion: null,
+            },
+            {
+               emissiveFactor: [
+                  0,
+                  0,
+                  0,
+                  1,
+               ],
+            },
+            {
+               emissive: null,
+            },
+            {
+               reflectance: 0.5,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/gltf_material.sfm",
+      },
+   ],
+   model: {
+      attributes: [
+         "Position",
+         "TexCoord",
+         "Orientation",
+      ],
+      file: "sampledata/models/Saturn/Saturn.gltf",
+      name: "Saturn",
+      scale: 0.5,
+      recenter: true,
+      suggested_collision: {
+         center: {
+            x: 0,
+            y: 0,
+            z: 0,
+         },
+         size: {
+            x: 1,
+            y: 1,
+            z: 1,
+         },
+         type: "Box",
+      },
+   },
+   samplers: [
+      {
+         file: "sampledata/models/Saturn/SaturnRings_Mat_occlusionRoughnessMetallic.png",
+         name: "SaturnRings_Mat_occlusionRoughnessMetallic",
+         params: {
+            usage_type: "Data",
+         },
+         pipeline_name: "SaturnRings_Mat_occlusionRoughnessMetallic.png",
+      },
+      {
+         file: "sampledata/models/Saturn/SaturnRings_Mat_baseColor.png",
+         name: "SaturnRings_Mat_baseColor",
+         pipeline_name: "SaturnRings_Mat_baseColor.png",
+      },
+      {
+         file: "sampledata/models/Saturn/Saturn_Clouds_mat_baseColor.png",
+         name: "Saturn_Clouds_mat_baseColor",
+         pipeline_name: "Saturn_Clouds_mat_baseColor.png",
+      },
+      {
+         file: "sampledata/models/Saturn/SaturnPlanet_Opaque_Mat_baseColor.png",
+         name: "SaturnPlanet_Opaque_Mat_baseColor",
+         pipeline_name: "SaturnPlanet_Opaque_Mat_baseColor.png",
+      },
+   ],
+   version: "0.51:1",
+}

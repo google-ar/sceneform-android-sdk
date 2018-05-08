@@ -1,0 +1,155 @@
+{
+   materials: [
+      {
+         name: "Earth_Clouds_mat",
+         parameters: [
+            {
+               baseColorFactor: [
+                  1,
+                  1,
+                  1,
+                  1,
+               ],
+            },
+            {
+               baseColor: "Earth_Clouds_mat_baseColor",
+            },
+            {
+               normal: null,
+            },
+            {
+               metallicFactor: 1,
+            },
+            {
+               roughnessFactor: 1,
+            },
+            {
+               metallicRoughness: null,
+            },
+            {
+               occlusion: null,
+            },
+            {
+               emissiveFactor: [
+                  0,
+                  0,
+                  0,
+                  1,
+               ],
+            },
+            {
+               emissive: null,
+            },
+            {
+               reflectance: 0.5,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/gltf_material.sfm",
+      },
+      {
+         name: "Earth_Mat",
+         parameters: [
+            {
+               baseColorFactor: [
+                  1,
+                  1,
+                  1,
+                  1,
+               ],
+            },
+            {
+               baseColor: "Earth_Mat_baseColor",
+            },
+            {
+               normal: "Earth_Mat_normal",
+            },
+            {
+               metallicFactor: 1,
+            },
+            {
+               roughnessFactor: 1,
+            },
+            {
+               metallicRoughness: "Earth_Mat_occlusionRoughnessMetallic",
+            },
+            {
+               occlusion: null,
+            },
+            {
+               emissiveFactor: [
+                  0,
+                  0,
+                  0,
+                  1,
+               ],
+            },
+            {
+               emissive: null,
+            },
+            {
+               reflectance: 0.5,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/gltf_material.sfm",
+      },
+   ],
+   model: {
+      attributes: [
+         "Position",
+         "TexCoord",
+         "Orientation",
+      ],
+      file: "sampledata/models/Earth/Earth.gltf",
+      name: "Earth",
+      scale: 0.5,
+      recenter: true,
+      suggested_collision: {
+         center: {
+            x: 0,
+            y: 0,
+            z: 0,
+         },
+         size: {
+            x: 1,
+            y: 1,
+            z: 1,
+         },
+         type: "Box",
+      },
+   },
+   samplers: [
+      {
+         file: "sampledata/models/Earth/Earth_Mat_occlusionRoughnessMetallic.png",
+         name: "Earth_Mat_occlusionRoughnessMetallic",
+         params: {
+            usage_type: "Data",
+         },
+         pipeline_name: "Earth_Mat_occlusionRoughnessMetallic.png",
+      },
+      {
+         file: "sampledata/models/Earth/Earth_Mat_normal.png",
+         name: "Earth_Mat_normal",
+         params: {
+            usage_type: "Normal",
+         },
+         pipeline_name: "Earth_Mat_normal.png",
+      },
+      {
+         file: "sampledata/models/Earth/Earth_Mat_baseColor.png",
+         name: "Earth_Mat_baseColor",
+         pipeline_name: "Earth_Mat_baseColor.png",
+      },
+      {
+         file: "sampledata/models/Earth/Earth_Clouds_mat_baseColor.png",
+         name: "Earth_Clouds_mat_baseColor",
+         pipeline_name: "Earth_Clouds_mat_baseColor.png",
+      },
+   ],
+   version: "0.51:1",
+}
