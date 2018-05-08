@@ -1,0 +1,181 @@
+{
+    "accessors": [
+        {
+            "bufferView": 0,
+            "componentType": 5125,
+            "count": 15744,
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 1,
+            "componentType": 5126,
+            "count": 2667,
+            "max": [
+                0.9999999403953552,
+                1,
+                0.9999998211860657
+            ],
+            "min": [
+                -0.9999999403953552,
+                -1,
+                -0.9999998211860657
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 2,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 3,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC2"
+        }
+    ],
+    "asset": {
+        "generator": "Substance Painter 2017.4.0",
+        "version": "2.0"
+    },
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteLength": 62976,
+            "byteOffset": 0,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 62976,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 94980,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 21336,
+            "byteOffset": 126984,
+            "target": 34962
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 148320,
+            "uri": "Mercury.bin"
+        }
+    ],
+    "images": [
+        {
+            "uri": "Mercury_Mat_baseColor.png"
+        },
+        {
+            "uri": "Mercury_Mat_occlusionRoughnessMetallic.png"
+        },
+        {
+            "uri": "Mercury_Mat_normal.png"
+        }
+    ],
+    "materials": [
+        {
+            "alphaMode": "OPAQUE",
+            "name": "Mercury_Mat",
+            "normalTexture": {
+                "index": 2
+            },
+            "occlusionTexture": {
+                "index": 1
+            },
+            "pbrMetallicRoughness": {
+                "baseColorTexture": {
+                    "index": 0
+                },
+                "metallicRoughnessTexture": {
+                    "index": 1
+                }
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "Mercury",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 2,
+                        "POSITION": 1,
+                        "TEXCOORD_0": 3
+                    },
+                    "indices": 0,
+                    "material": 0,
+                    "mode": 4
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "children": [
+                1
+            ],
+            "name": "root",
+            "scale": [
+                10,
+                10,
+                10
+            ],
+            "translation": [
+                9.5367431640625e-07,
+                0,
+                9.5367431640625e-07
+            ]
+        },
+        {
+            "children": [
+                2
+            ],
+            "name": "Mercury"
+        },
+        {
+            "mesh": 0,
+            "name": "Mercury"
+        }
+    ],
+    "samplers": [
+        {
+            "magFilter": 9729,
+            "minFilter": 9985,
+            "wrapS": 10497,
+            "wrapT": 10497
+        }
+    ],
+    "scene": 0,
+    "scenes": [
+        {
+            "name": "Scene",
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "textures": [
+        {
+            "sampler": 0,
+            "source": 0
+        },
+        {
+            "sampler": 0,
+            "source": 1
+        },
+        {
+            "sampler": 0,
+            "source": 2
+        }
+    ]
+}

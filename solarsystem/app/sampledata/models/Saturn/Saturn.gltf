@@ -1,0 +1,376 @@
+{
+    "accessors": [
+        {
+            "bufferView": 0,
+            "componentType": 5125,
+            "count": 15744,
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 1,
+            "componentType": 5126,
+            "count": 2667,
+            "max": [
+                0.4555538296699524,
+                0.45555388927459717,
+                0.4555537700653076
+            ],
+            "min": [
+                -0.45555388927459717,
+                -0.45555388927459717,
+                -0.4555538594722748
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 2,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 3,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC2"
+        },
+        {
+            "bufferView": 4,
+            "componentType": 5125,
+            "count": 15744,
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 5,
+            "componentType": 5126,
+            "count": 2667,
+            "max": [
+                0.4601093828678131,
+                0.4601094722747803,
+                0.46010932326316833
+            ],
+            "min": [
+                -0.4601094722747803,
+                -0.4601094722747803,
+                -0.4601094126701355
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 6,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 7,
+            "componentType": 5126,
+            "count": 2667,
+            "type": "VEC2"
+        },
+        {
+            "bufferView": 8,
+            "componentType": 5125,
+            "count": 768,
+            "type": "SCALAR"
+        },
+        {
+            "bufferView": 9,
+            "componentType": 5126,
+            "count": 260,
+            "max": [
+                1,
+                4.5617255750585173e-07,
+                0.9999999403953552
+            ],
+            "min": [
+                -1,
+                -4.5617255750585173e-07,
+                -0.9999999403953552
+            ],
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 10,
+            "componentType": 5126,
+            "count": 260,
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 11,
+            "componentType": 5126,
+            "count": 260,
+            "type": "VEC2"
+        }
+    ],
+    "asset": {
+        "generator": "Substance Painter 2017.4.0",
+        "version": "2.0"
+    },
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteLength": 62976,
+            "byteOffset": 0,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 62976,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 94980,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 21336,
+            "byteOffset": 126984,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 62976,
+            "byteOffset": 148320,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 211296,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 32004,
+            "byteOffset": 243300,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 21336,
+            "byteOffset": 275304,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3072,
+            "byteOffset": 296640,
+            "target": 34963
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3120,
+            "byteOffset": 299712,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 3120,
+            "byteOffset": 302832,
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 2080,
+            "byteOffset": 305952,
+            "target": 34962
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 308032,
+            "uri": "Saturn.bin"
+        }
+    ],
+    "images": [
+        {
+            "uri": "Saturn_Clouds_mat_baseColor.png"
+        },
+        {
+            "uri": "SaturnPlanet_Opaque_Mat_baseColor.png"
+        },
+        {
+            "uri": "SaturnRings_Mat_baseColor.png"
+        },
+        {
+            "uri": "SaturnRings_Mat_occlusionRoughnessMetallic.png"
+        }
+    ],
+    "extensions": {
+      "KHR_materials_unlit": {}
+    },
+    "materials": [
+        {
+            "extensions": {
+              "KHR_materials_unlit": {}
+            },
+            "alphaMode": "BLEND",
+            "name": "Saturn_Clouds_mat",
+            "pbrMetallicRoughness": {
+                "baseColorTexture": {
+                    "index": 0
+                }
+            }
+        },
+        {
+            "alphaMode": "OPAQUE",
+            "name": "SaturnPlanet_Opaque_Mat",
+            "pbrMetallicRoughness": {
+                "baseColorTexture": {
+                    "index": 1
+                },
+                "metallicFactor": 0.0,
+                "roughnessFactor": 0.66
+            }
+        },
+        {
+            "alphaMode": "BLEND",
+            "name": "SaturnRings_Mat",
+            "pbrMetallicRoughness": {
+                "baseColorTexture": {
+                    "index": 2
+                },
+                "metallicRoughnessTexture": {
+                    "index": 3
+                }
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "Saturn_Globe_Opaque",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 2,
+                        "POSITION": 1,
+                        "TEXCOORD_0": 3
+                    },
+                    "indices": 0,
+                    "material": 1,
+                    "mode": 4
+                }
+            ]
+        },
+        {
+            "name": "Saturn_Clouds",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 6,
+                        "POSITION": 5,
+                        "TEXCOORD_0": 7
+                    },
+                    "indices": 4,
+                    "material": 0,
+                    "mode": 4
+                }
+            ]
+        },
+        {
+            "name": "Rings",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 10,
+                        "POSITION": 9,
+                        "TEXCOORD_0": 11
+                    },
+                    "indices": 8,
+                    "material": 2,
+                    "mode": 4
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "children": [
+                1,
+                3,
+                5
+            ],
+            "name": "root",
+            "scale": [
+                21.9512996673584,
+                21.9512996673584,
+                21.9512996673584
+            ],
+            "translation": [
+                1.9073486328125e-06,
+                0,
+                1.9073486328125e-06
+            ]
+        },
+        {
+            "children": [
+                2
+            ],
+            "name": "Saturn_Globe_Opaque"
+        },
+        {
+            "mesh": 0,
+            "name": "Saturn_Globe_Opaque"
+        },
+        {
+            "children": [
+                4
+            ],
+            "name": "Saturn_Clouds"
+        },
+        {
+            "mesh": 1,
+            "name": "Saturn_Clouds"
+        },
+        {
+            "children": [
+                6
+            ],
+            "name": "Rings"
+        },
+        {
+            "mesh": 2,
+            "name": "Rings"
+        }
+    ],
+    "samplers": [
+        {
+            "magFilter": 9729,
+            "minFilter": 9985,
+            "wrapS": 10497,
+            "wrapT": 10497
+        }
+    ],
+    "scene": 0,
+    "scenes": [
+        {
+            "name": "Scene",
+            "nodes": [
+                0
+            ]
+        }
+    ],
+    "textures": [
+        {
+            "sampler": 0,
+            "source": 0
+        },
+        {
+            "sampler": 0,
+            "source": 1
+        },
+        {
+            "sampler": 0,
+            "source": 2
+        },
+        {
+            "sampler": 0,
+            "source": 3
+        }
+    ]
+}
