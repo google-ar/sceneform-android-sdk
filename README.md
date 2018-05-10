@@ -11,7 +11,7 @@ Please note, we do not accept pull requests.
 
 This repository contains Sceneform sample projects.
 
-To get started with the Sceneform SDK, follow the ARCore [Android Quickstart](//devsite.googleplex.com/ar/develop/java/quickstart) guide.
+To get started with the Sceneform SDK, follow the ARCore [Android Quickstart](//developers.google.com/ar/develop/java/quickstart) guide.
 
 
 ## API Reference
