@@ -42,6 +42,10 @@ import com.google.ar.core.exceptions.UnavailableSdkTooOldException;
 /** Static utility methods to simplify creating multiple demo activities. */
 public class DemoUtils {
   private static final String TAG = "SceneformDemoUtils";
+
+  private DemoUtils() {
+  }
+
   /**
    * Creates and shows a Toast containing an error message. If there was an exception passed in it
    * will be appended to the toast. The error will also be written to the Log
