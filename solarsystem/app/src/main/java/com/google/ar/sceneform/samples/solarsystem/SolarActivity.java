@@ -86,6 +86,12 @@ public class SolarActivity extends AppCompatActivity {
   // CompletableFuture requires api level 24
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+    if (!DemoUtils.checkIsSupportedDeviceOrFinish(this)) {
+      // Not a supported device.
+      return;
+    }
+
     setContentView(R.layout.activity_solar);
     arSceneView = findViewById(R.id.ar_scene_view);
 
@@ -226,6 +232,9 @@ public class SolarActivity extends AppCompatActivity {
   @Override
   protected void onResume() {
     super.onResume();
+    if (arSceneView == null) {
+      return;
+    }
 
     if (arSceneView.getSession() == null) {
       // If the session wasn't created yet, don't resume rendering.
@@ -259,13 +268,17 @@ public class SolarActivity extends AppCompatActivity {
   @Override
   public void onPause() {
     super.onPause();
-    arSceneView.pause();
+    if (arSceneView != null) {
+      arSceneView.pause();
+    }
   }
 
   @Override
   public void onDestroy() {
     super.onDestroy();
-    arSceneView.destroy();
+    if (arSceneView != null) {
+      arSceneView.destroy();
+    }
   }
 
   @Override

@@ -17,10 +17,13 @@ package com.google.ar.sceneform.samples.solarsystem;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
+import android.os.Build.VERSION_CODES;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
@@ -42,6 +45,10 @@ import com.google.ar.core.exceptions.UnavailableSdkTooOldException;
 /** Static utility methods to simplify creating multiple demo activities. */
 public class DemoUtils {
   private static final String TAG = "SceneformDemoUtils";
+  private static final double MIN_OPENGL_VERSION = 3.1;
+
+  private DemoUtils() {}
+
   /**
    * Creates and shows a Toast containing an error message. If there was an exception passed in it
    * will be appended to the toast. The error will also be written to the Log
@@ -94,7 +101,7 @@ public class DemoUtils {
           break;
       }
       session = new Session(activity);
-      // IMPORTANT!!!  ArSceneView needs to use the non-blocking update mode.
+      // IMPORTANT!!!  ArSceneView requires the `LATEST_CAMERA_IMAGE` non-blocking update mode.
       Config config = new Config(session);
       config.setUpdateMode(Config.UpdateMode.LATEST_CAMERA_IMAGE);
       session.configure(config);
@@ -144,5 +151,35 @@ public class DemoUtils {
       Log.e(TAG, "Exception: " + sessionException);
     }
     Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
+  }
+
+  /**
+   * Returns false and displays an error message if Sceneform can not run, true if Sceneform can run
+   * on this device.
+   *
+   * <p>Sceneform requires Android N on the device as well as OpenGL 3.1 capabilities.
+   *
+   * <p>Finishes the activity if Sceneform can not run
+   */
+  public static boolean checkIsSupportedDeviceOrFinish(final Activity activity) {
+    if (Build.VERSION.SDK_INT < VERSION_CODES.N) {
+      Log.e(TAG, "Sceneform requires Android N or later");
+      Toast.makeText(activity, "Sceneform requires Android N or later", Toast.LENGTH_LONG).show();
+      activity.finish();
+      return false;
+    }
+
+    String openGlVersionString =
+        ((ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE))
+            .getDeviceConfigurationInfo()
+            .getGlEsVersion();
+    if (Double.parseDouble(openGlVersionString) < MIN_OPENGL_VERSION) {
+      Log.e(TAG, "Sceneform requires OpenGL ES 3.1 later");
+      Toast.makeText(activity, "Sceneform requires OpenGL ES 3.1 or later", Toast.LENGTH_LONG)
+          .show();
+      activity.finish();
+      return false;
+    }
+    return true;
   }
 }

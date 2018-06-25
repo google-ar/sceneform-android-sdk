@@ -89,9 +89,6 @@
             "normalTexture": {
                 "index": 2
             },
-            "occlusionTexture": {
-                "index": 1
-            },
             "pbrMetallicRoughness": {
                 "baseColorTexture": {
                     "index": 0
@@ -126,9 +123,9 @@
             ],
             "name": "root",
             "scale": [
-                10,
-                10,
-                10
+                1.0,
+                1.0,
+                1.0
             ],
             "translation": [
                 9.5367431640625e-07,
