@@ -51,7 +51,7 @@ public class AugmentedImageActivity extends AppCompatActivity {
     arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
     fitToScanView = findViewById(R.id.image_view_fit_to_scan);
 
-    arFragment.getArSceneView().getScene().setOnUpdateListener(this::onUpdateFrame);
+    arFragment.getArSceneView().getScene().addOnUpdateListener(this::onUpdateFrame);
   }
 
   @Override
@@ -68,9 +68,6 @@ public class AugmentedImageActivity extends AppCompatActivity {
    * @param frameTime - time since last frame.
    */
   private void onUpdateFrame(FrameTime frameTime) {
-    // Always call the fragment's onUpdate.
-    arFragment.onUpdate(frameTime);
-
     Frame frame = arFragment.getArSceneView().getArFrame();
 
     // If there is no frame or ARCore is not tracking yet, just return.

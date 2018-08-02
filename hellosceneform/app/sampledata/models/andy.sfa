@@ -35,6 +35,7 @@
       ],
       file: "sampledata/models/andy.obj",
       name: "andy",
+      recenter: "root",
       suggested_collision: {
          center: {
             x: 0,

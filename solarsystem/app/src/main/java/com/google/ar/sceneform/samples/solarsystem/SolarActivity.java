@@ -203,7 +203,7 @@ public class SolarActivity extends AppCompatActivity {
     // detected.
     arSceneView
         .getScene()
-        .setOnUpdateListener(
+        .addOnUpdateListener(
             frameTime -> {
               if (loadingMessageSnackbar == null) {
                 return;

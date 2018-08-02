@@ -56,7 +56,7 @@ public class AugmentedImageFragment extends ArFragment {
 
   // Do a runtime check for the OpenGL level available at runtime to avoid Sceneform crashing the
   // application.
-  private static final double MIN_OPENGL_VERSION = 3.1;
+  private static final double MIN_OPENGL_VERSION = 3.0;
 
   @Override
   public void onAttach(Context context) {
@@ -75,9 +75,9 @@ public class AugmentedImageFragment extends ArFragment {
             .getDeviceConfigurationInfo()
             .getGlEsVersion();
     if (Double.parseDouble(openGlVersionString) < MIN_OPENGL_VERSION) {
-      Log.e(TAG, "Sceneform requires OpenGL ES 3.1 or later");
+      Log.e(TAG, "Sceneform requires OpenGL ES 3.0 or later");
       SnackbarHelper.getInstance()
-          .showError(getActivity(), "Sceneform requires OpenGL ES 3.1 or later");
+          .showError(getActivity(), "Sceneform requires OpenGL ES 3.0 or later");
     }
   }
 

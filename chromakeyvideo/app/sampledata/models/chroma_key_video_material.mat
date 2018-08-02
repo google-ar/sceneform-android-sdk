@@ -1,0 +1,76 @@
+// Copyright 2018 Google LLC. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+material {
+    "name" : "Chroma Key Video Material",
+    "defines" : [
+        "baseColor"
+    ],
+    "parameters" : [
+        {
+           // The texture displaying the frames of the video.
+           "type" : "samplerExternal",
+           "name" : "videoTexture"
+        },
+        {
+            // The color to filter out of the video.
+            "type" : "float4",
+            "name" : "keyColor"
+        }
+    ],
+    "requires" : [
+        "position",
+        "uv0"
+    ],
+    "shadingModel" : "unlit",
+    // Blending is "masked" instead of "transparent" so that the shadows account for the
+    // transparent regions of the video instead of just the shape of the mesh.
+    "blending" : "masked",
+    // Material is double sided so that the video is visible when walking behind it.
+    "doubleSided" : true
+}
+
+fragment {
+    vec3 desaturate(vec3 color, float amount) {
+        // Convert color to grayscale using Luma formula:
+        // https://en.wikipedia.org/wiki/Luma_%28video%29
+        vec3 gray = vec3(dot(vec3(0.2126, 0.7152, 0.0722), color));
+
+        return vec3(mix(color, gray, amount));
+    }
+
+    void material(inout MaterialInputs material) {
+        prepareMaterial(material);
+
+        vec2 uv = getUV0();
+
+        if (!gl_FrontFacing) {
+          uv.x = 1.0 - uv.x;
+        }
+
+        vec3 color = texture(materialParams_videoTexture, uv).rgb;
+        vec3 keyColor = materialParams.keyColor.rgb;
+
+        float threshold = 0.675;
+        float slope = 0.2;
+
+        float distance = abs(length(abs(keyColor - color)));
+        float edge0 = threshold * (1.0 - slope);
+        float alpha = smoothstep(edge0, threshold, distance);
+        color = desaturate(color, 1.0 - (alpha * alpha * alpha));
+
+        material.baseColor.a = alpha;
+        material.baseColor.rgb = inverseTonemapSRGB(color);
+        material.baseColor.rgb *= material.baseColor.a;
+    }
+}
