@@ -1,0 +1,179 @@
+{
+  materials: [
+    {
+      name: 'Venus_Atmosphere_Mat',
+      parameters: [
+        {
+          baseColorFactor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColor: 'Venus_Atmosphere_Mat_baseColor',
+        },
+        {
+          diffuseColorFactor: null,
+        },
+        {
+          diffuseColor: null,
+        },
+        {
+          normal: null,
+        },
+        {
+          metallicFactor: 1,
+        },
+        {
+          roughnessFactor: 1,
+        },
+        {
+          specularFactor: null,
+        },
+        {
+          glossinessFactor: null,
+        },
+        {
+          specularGlossiness: null,
+        },
+        {
+          specularGlossinessCalculation: null,
+        },
+        {
+          metallicRoughness: 'Venus_Atmosphere_Mat_occlusionRoughnessMetallic',
+        },
+        {
+          occlusion: null,
+        },
+        {
+          emissiveFactor: [
+            0,
+            0,
+            0,
+            1,
+          ],
+        },
+        {
+          emissive: null,
+        },
+        {
+          reflectance: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/gltf_material.sfm',
+    },
+    {
+      name: 'Venus_Terrain_Mat',
+      parameters: [
+        {
+          baseColorFactor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColor: 'Venus_Terrain_Mat_baseColor',
+        },
+        {
+          diffuseColorFactor: null,
+        },
+        {
+          diffuseColor: null,
+        },
+        {
+          normal: 'Venus_Terrain_Mat_normal',
+        },
+        {
+          metallicFactor: 0,
+        },
+        {
+          roughnessFactor: 1,
+        },
+        {
+          specularFactor: null,
+        },
+        {
+          glossinessFactor: null,
+        },
+        {
+          specularGlossiness: null,
+        },
+        {
+          specularGlossinessCalculation: null,
+        },
+        {
+          metallicRoughness: null,
+        },
+        {
+          occlusion: null,
+        },
+        {
+          emissiveFactor: [
+            0,
+            0,
+            0,
+            1,
+          ],
+        },
+        {
+          emissive: null,
+        },
+        {
+          reflectance: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/gltf_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/models/Venus/Venus.gltf',
+    name: 'Venus',
+    recenter: true,
+    scale: 0.5,
+  },
+  samplers: [
+    {
+      file: 'sampledata/models/Venus/Venus_Terrain_Mat_baseColor.png',
+      name: 'Venus_Terrain_Mat_baseColor',
+      pipeline_name: 'Venus_Terrain_Mat_baseColor.png',
+    },
+    {
+      file: 'sampledata/models/Venus/Venus_Terrain_Mat_normal.png',
+      name: 'Venus_Terrain_Mat_normal',
+      params: {
+        usage_type: 'Normal',
+      },
+      pipeline_name: 'Venus_Terrain_Mat_normal.png',
+    },
+    {
+      file: 'sampledata/models/Venus/Venus_Atmosphere_Mat_baseColor.png',
+      name: 'Venus_Atmosphere_Mat_baseColor',
+      pipeline_name: 'Venus_Atmosphere_Mat_baseColor.png',
+    },
+    {
+      file: 'sampledata/models/Venus/Venus_Atmosphere_Mat_occlusionRoughnessMetallic.png',
+      name: 'Venus_Atmosphere_Mat_occlusionRoughnessMetallic',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'Venus_Atmosphere_Mat_occlusionRoughnessMetallic.png',
+    },
+  ],
+  version: '0.51:1',
+}

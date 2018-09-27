@@ -1,0 +1,107 @@
+{
+  materials: [
+    {
+      name: 'Luna_Mat',
+      parameters: [
+        {
+          baseColorFactor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColor: 'Luna_Mat_baseColor',
+        },
+        {
+          diffuseColorFactor: null,
+        },
+        {
+          diffuseColor: null,
+        },
+        {
+          normal: 'Luna_Mat_normal',
+        },
+        {
+          metallicFactor: 1,
+        },
+        {
+          roughnessFactor: 1,
+        },
+        {
+          specularFactor: null,
+        },
+        {
+          glossinessFactor: null,
+        },
+        {
+          specularGlossiness: null,
+        },
+        {
+          specularGlossinessCalculation: null,
+        },
+        {
+          metallicRoughness: 'Luna_Mat_occlusionRoughnessMetallic',
+        },
+        {
+          occlusion: null,
+        },
+        {
+          emissiveFactor: [
+            0,
+            0,
+            0,
+            1,
+          ],
+        },
+        {
+          emissive: null,
+        },
+        {
+          reflectance: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/gltf_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/models/Luna/Luna.gltf',
+    name: 'Luna',
+    recenter: true,
+    scale: 0.5,
+  },
+  samplers: [
+    {
+      file: 'sampledata/models/Luna/Luna_Mat_baseColor.png',
+      name: 'Luna_Mat_baseColor',
+      pipeline_name: 'Luna_Mat_baseColor.png',
+    },
+    {
+      file: 'sampledata/models/Luna/Luna_Mat_occlusionRoughnessMetallic.png',
+      name: 'Luna_Mat_occlusionRoughnessMetallic',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'Luna_Mat_occlusionRoughnessMetallic.png',
+    },
+    {
+      file: 'sampledata/models/Luna/Luna_Mat_normal.png',
+      name: 'Luna_Mat_normal',
+      params: {
+        usage_type: 'Normal',
+      },
+      pipeline_name: 'Luna_Mat_normal.png',
+    },
+  ],
+  version: '0.51:1',
+}

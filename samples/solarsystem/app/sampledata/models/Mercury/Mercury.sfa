@@ -1,0 +1,109 @@
+{
+  materials: [
+    {
+      name: 'Mercury_Mat',
+      parameters: [
+        {
+          baseColorFactor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColor: 'Mercury_Mat_baseColor',
+        },
+        {
+          diffuseColorFactor: null,
+        },
+        {
+          diffuseColor: null,
+        },
+        {
+          normal: 'Mercury_Mat_normal',
+        },
+        {
+          metallicFactor: 1,
+        },
+        {
+          roughnessFactor: 1,
+        },
+        {
+          specularFactor: null,
+        },
+        {
+          glossinessFactor: null,
+        },
+        {
+          specularGlossiness: null,
+        },
+        {
+          specularGlossinessCalculation: null,
+        },
+        {
+          metallicRoughness: 'Mercury_Mat_occlusionRoughnessMetallic',
+        },
+        {
+          occlusion: null,
+        },
+        {
+          emissiveFactor: [
+            0,
+            0,
+            0,
+            1,
+          ],
+        },
+        {
+          emissive: null,
+        },
+        {
+          reflectance: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/gltf_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {
+      skin_width: 0.75,
+    },
+    file: 'sampledata/models/Mercury/Mercury.gltf',
+    name: 'Mercury',
+    recenter: true,
+    scale: 0.5,
+  },
+  samplers: [
+    {
+      file: 'sampledata/models/Mercury/Mercury_Mat_baseColor.png',
+      name: 'Mercury_Mat_baseColor',
+      pipeline_name: 'Mercury_Mat_baseColor.png',
+    },
+    {
+      file: 'sampledata/models/Mercury/Mercury_Mat_occlusionRoughnessMetallic.png',
+      name: 'Mercury_Mat_occlusionRoughnessMetallic',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'Mercury_Mat_occlusionRoughnessMetallic.png',
+    },
+    {
+      file: 'sampledata/models/Mercury/Mercury_Mat_normal.png',
+      name: 'Mercury_Mat_normal',
+      params: {
+        usage_type: 'Normal',
+      },
+      pipeline_name: 'Mercury_Mat_normal.png',
+    },
+  ],
+  version: '0.51:1',
+}

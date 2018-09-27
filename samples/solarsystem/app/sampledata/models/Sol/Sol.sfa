@@ -1,0 +1,250 @@
+{
+  materials: [
+    {
+      name: 'Sol_Opaque_Mat',
+      parameters: [
+        {
+          baseColorFactor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColor: 'Sol_Opaque_Mat_baseColor',
+        },
+        {
+          diffuseColorFactor: null,
+        },
+        {
+          diffuseColor: null,
+        },
+        {
+          normal: null,
+        },
+        {
+          metallicFactor: 0,
+        },
+        {
+          roughnessFactor: 1,
+        },
+        {
+          specularFactor: null,
+        },
+        {
+          glossinessFactor: null,
+        },
+        {
+          specularGlossiness: null,
+        },
+        {
+          specularGlossinessCalculation: null,
+        },
+        {
+          metallicRoughness: null,
+        },
+        {
+          occlusion: null,
+        },
+        {
+          emissiveFactor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          emissive: 'Sol_Opaque_Mat_emissive',
+        },
+        {
+          reflectance: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/gltf_material.sfm',
+    },
+    {
+      name: 'SolarFlare_Transparent_Mat',
+      parameters: [
+        {
+          baseColorFactor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColor: 'SolarFlare_Transparent_Mat_baseColor',
+        },
+        {
+          diffuseColorFactor: null,
+        },
+        {
+          diffuseColor: null,
+        },
+        {
+          normal: null,
+        },
+        {
+          metallicFactor: 0,
+        },
+        {
+          roughnessFactor: 1,
+        },
+        {
+          specularFactor: null,
+        },
+        {
+          glossinessFactor: null,
+        },
+        {
+          specularGlossiness: null,
+        },
+        {
+          specularGlossinessCalculation: null,
+        },
+        {
+          metallicRoughness: null,
+        },
+        {
+          occlusion: null,
+        },
+        {
+          emissiveFactor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          emissive: 'SolarFlare_Transparent_Mat_emissive',
+        },
+        {
+          reflectance: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/gltf_material.sfm',
+    },
+    {
+      name: 'Sol_Transparent_Mat',
+      parameters: [
+        {
+          baseColorFactor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColor: 'Sol_Transparent_Mat_baseColor',
+        },
+        {
+          diffuseColorFactor: null,
+        },
+        {
+          diffuseColor: null,
+        },
+        {
+          normal: null,
+        },
+        {
+          metallicFactor: 0,
+        },
+        {
+          roughnessFactor: 1,
+        },
+        {
+          specularFactor: null,
+        },
+        {
+          glossinessFactor: null,
+        },
+        {
+          specularGlossiness: null,
+        },
+        {
+          specularGlossinessCalculation: null,
+        },
+        {
+          metallicRoughness: null,
+        },
+        {
+          occlusion: null,
+        },
+        {
+          emissiveFactor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          emissive: 'Sol_Transparent_Mat_emissive',
+        },
+        {
+          reflectance: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/gltf_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/models/Sol/Sol.gltf',
+    name: 'Sol',
+    recenter: true,
+    scale: 0.5,
+  },
+  samplers: [
+    {
+      file: 'sampledata/models/Sol/Sol_Transparent_Mat_baseColor.png',
+      name: 'Sol_Transparent_Mat_baseColor',
+      pipeline_name: 'Sol_Transparent_Mat_baseColor.png',
+    },
+    {
+      file: 'sampledata/models/Sol/SolarFlare_Transparent_Mat_baseColor.png',
+      name: 'SolarFlare_Transparent_Mat_baseColor',
+      pipeline_name: 'SolarFlare_Transparent_Mat_baseColor.png',
+    },
+    {
+      file: 'sampledata/models/Sol/SolarFlare_Transparent_Mat_emissive.png',
+      name: 'SolarFlare_Transparent_Mat_emissive',
+      pipeline_name: 'SolarFlare_Transparent_Mat_emissive.png',
+    },
+    {
+      file: 'sampledata/models/Sol/Sol_Opaque_Mat_baseColor.png',
+      name: 'Sol_Opaque_Mat_baseColor',
+      pipeline_name: 'Sol_Opaque_Mat_baseColor.png',
+    },
+    {
+      file: 'sampledata/models/Sol/Sol_Transparent_Mat_emissive.png',
+      name: 'Sol_Transparent_Mat_emissive',
+      pipeline_name: 'Sol_Transparent_Mat_emissive.png',
+    },
+    {
+      file: 'sampledata/models/Sol/Sol_Opaque_Mat_emissive.png',
+      name: 'Sol_Opaque_Mat_emissive',
+      pipeline_name: 'Sol_Opaque_Mat_emissive.png',
+    },
+  ],
+  version: '0.51:1',
+}
