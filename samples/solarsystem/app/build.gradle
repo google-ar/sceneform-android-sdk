@@ -51,7 +51,7 @@ android {
 }
 
 dependencies {
-  implementation "com.google.ar.sceneform:core:1.5.0"
+  implementation "com.google.ar.sceneform:core:1.5.1"
   implementation "com.android.support:appcompat-v7:27.1.1"
   implementation "com.android.support:design:27.1.1"
 }
