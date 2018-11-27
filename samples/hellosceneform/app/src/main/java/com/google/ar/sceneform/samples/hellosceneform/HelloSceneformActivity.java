@@ -60,37 +60,67 @@ public class HelloSceneformActivity extends AppCompatActivity {
 
     // When you build a Renderable, Sceneform loads its resources in the background while returning
     // a CompletableFuture. Call thenAccept(), handle(), or check isDone() before calling get().
-    ModelRenderable.builder()
-        .setSource(this, R.raw.andy)
-        .build()
-        .thenAccept(renderable -> andyRenderable = renderable)
-        .exceptionally(
-            throwable -> {
-              Toast toast =
-                  Toast.makeText(this, "Unable to load andy renderable", Toast.LENGTH_LONG);
-              toast.setGravity(Gravity.CENTER, 0, 0);
-              toast.show();
-              return null;
-            });
+ 
 
     arFragment.setOnTapArPlaneListener(
         (HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
-          if (andyRenderable == null) {
+            initializeGallery();
             return;
           }
-
-          // Create the Anchor.
-          Anchor anchor = hitResult.createAnchor();
-          AnchorNode anchorNode = new AnchorNode(anchor);
-          anchorNode.setParent(arFragment.getArSceneView().getScene());
-
-          // Create the transformable andy and add it to the anchor.
-          TransformableNode andy = new TransformableNode(arFragment.getTransformationSystem());
-          andy.setParent(anchorNode);
-          andy.setRenderable(andyRenderable);
-          andy.select();
-        });
   }
+  
+  private void initializeGallery() {
+  LinearLayout gallery = findViewById(R.id.gallery_layout);
+
+ ImageView andy = new ImageView(this);
+ andy.setImageResource(R.drawable.droid_thumb);
+ andy.setContentDescription("andy");
+ andy.setOnClickListener(view ->{addObject(Uri.parse("andy.sfb"));});
+ gallery.addView(andy);
+
+}
+  
+ private void addObject(Uri model) {
+ Frame frame = fragment.getArSceneView().getArFrame();
+ android.graphics.Point pt = getScreenCenter();
+ List<HitResult> hits;
+ if (frame != null) {
+   hits = frame.hitTest(pt.x, pt.y);
+   for (HitResult hit : hits) {
+     Trackable trackable = hit.getTrackable();
+     if (trackable instanceof Plane &&
+             ((Plane) trackable).isPoseInPolygon(hit.getHitPose())) {
+       placeObject(fragment, hit.createAnchor(), model);
+       break;
+
+     }
+   }
+ }
+}
+  
+  private void placeObject(ArFragment fragment, Anchor anchor, Uri model) {
+ CompletableFuture<Void> renderableFuture =
+         ModelRenderable.builder()
+                 .setSource(fragment.getContext(), model)
+                 .build()
+                 .thenAccept(renderable -> addNodeToScene(fragment, anchor, renderable))
+                 .exceptionally((throwable -> {
+                  AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                     builder.setMessage(throwable.getMessage())
+                       .setTitle("Codelab error!");
+                     AlertDialog dialog = builder.create();
+                    dialog.show();
+                   return null;
+                 }));
+}
+  private void addNodeToScene(ArFragment fragment, Anchor anchor, Renderable renderable) {
+ AnchorNode anchorNode = new AnchorNode(anchor);
+ TransformableNode node = new TransformableNode(fragment.getTransformationSystem());
+ node.setRenderable(renderable);
+ node.setParent(anchorNode);
+ fragment.getArSceneView().getScene().addChild(anchorNode);
+ node.select();
+}
 
   /**
    * Returns false and displays an error message if Sceneform can not run, true if Sceneform can run
