@@ -26,6 +26,10 @@ material {
             // The color to filter out of the video.
             "type" : "float4",
             "name" : "keyColor"
+        },
+        {
+            "type" : "bool",
+            "name" : "disableChromaKey",
         }
     ],
     "requires" : [
@@ -58,19 +62,24 @@ fragment {
           uv.x = 1.0 - uv.x;
         }
 
-        vec3 color = texture(materialParams_videoTexture, uv).rgb;
-        vec3 keyColor = materialParams.keyColor.rgb;
+        vec4 color = texture(materialParams_videoTexture, uv).rgba;
 
-        float threshold = 0.675;
-        float slope = 0.2;
+        if (!materialParams.disableChromaKey) {
+            vec3 keyColor = materialParams.keyColor.rgb;
 
-        float distance = abs(length(abs(keyColor - color)));
-        float edge0 = threshold * (1.0 - slope);
-        float alpha = smoothstep(edge0, threshold, distance);
-        color = desaturate(color, 1.0 - (alpha * alpha * alpha));
+            float threshold = 0.675;
+            float slope = 0.2;
 
-        material.baseColor.a = alpha;
-        material.baseColor.rgb = inverseTonemapSRGB(color);
-        material.baseColor.rgb *= material.baseColor.a;
+            float distance = abs(length(abs(keyColor - color.rgb)));
+            float edge0 = threshold * (1.0 - slope);
+            float alpha = smoothstep(edge0, threshold, distance);
+            color.rgb = desaturate(color.rgb, 1.0 - (alpha * alpha * alpha));
+
+            material.baseColor.a = alpha;
+            material.baseColor.rgb = inverseTonemapSRGB(color.rgb);
+            material.baseColor.rgb *= material.baseColor.a;
+        } else {
+            material.baseColor = color;
+        }
     }
 }

@@ -19,25 +19,11 @@ android {
     defaultConfig {
         applicationId "com.google.ar.sceneform.samples.hellosceneform"
 
-        // AR Optional apps must declare minSdkVersion >= 14.
-        // AR Required apps must declare minSdkVersion >= 24.
+        // Sceneform requires minSdkVersion >= 24.
         minSdkVersion 24
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-        ndk {
-            /*
-             * Sceneform is available for the following ABIs:
-             * 'arm64-v8a', 'armeabi-v7a', 'x86_64' and 'x86'.
-             * Your application should include the ABIs most appropriate to
-             * minimize APK size. Listing 'arm64-v8a' is recommended.
-             *
-             * This sample app includes two ABIs:
-             * 1. 'arm64-v8a' to run on devices
-             * 2. 'x86' to run in the Android emulator
-             */
-            abiFilters 'arm64-v8a', 'x86'
-        }
     }
     // Sceneform libraries use language constructs from Java 8.
     // Add these compile options if targeting minSdkVersion < 26.
@@ -60,13 +46,13 @@ android {
 dependencies {
 
     // Provides ArFragment, and other Sceneform UX resources:
-    implementation "com.google.ar.sceneform.ux:sceneform-ux:1.5.1"
+    implementation "com.google.ar.sceneform.ux:sceneform-ux:1.6.0"
 
-    // Use the Sceneform Ux Package built from the source files included in the sceneformux folder.
+    // Use the Sceneform UX Package built from the source files included in the sceneformux folder.
     //api project(":sceneformux")
 
     // Alternatively, use ArSceneView without the UX dependency.
-    //implementation "com.google.ar.sceneform:core:1.5.1"
+    //implementation "com.google.ar.sceneform:core:1.6.0"
 
     implementation "com.android.support:appcompat-v7:27.1.1"
 }

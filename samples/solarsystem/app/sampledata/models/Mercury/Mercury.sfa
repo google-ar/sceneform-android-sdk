@@ -59,9 +59,6 @@
           emissive: null,
         },
         {
-          reflectance: null,
-        },
-        {
           opacity: null,
         },
       ],

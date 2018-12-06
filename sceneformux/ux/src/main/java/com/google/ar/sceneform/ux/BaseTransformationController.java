@@ -106,6 +106,7 @@ public abstract class BaseTransformationController<T extends BaseGesture<T>>
   // Implementation of interface BaseGesture.OnGestureEventListener
   // ---------------------------------------------------------------------------------------
 
+  @SuppressWarnings("UngroupedOverloads") // This is not an overload, it is a different interface.
   @Override
   public void onUpdated(T gesture) {
     onContinueTransformation(gesture);

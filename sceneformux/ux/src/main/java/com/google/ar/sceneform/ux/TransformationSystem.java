@@ -28,7 +28,7 @@ import java.util.ArrayList;
  * <p>{@link #onTouch(HitTestResult, MotionEvent)} must be called for gestures to be detected. By
  * default, this is done automatically by {@link ArFragment}.
  */
-public class TransformationSystem implements TransformationGestureDetector {
+public class TransformationSystem {
   private final GesturePointersUtility gesturePointersUtility;
 
   private final DragGestureRecognizer dragGestureRecognizer;
@@ -84,15 +84,6 @@ public class TransformationSystem implements TransformationGestureDetector {
   }
 
   /**
-   * @deprecated Will be removed in release 1.6. Functionality has been merged into {@link
-   *     TransformationSystem}.
-   */
-  @Deprecated
-  public TransformationGestureDetector getGestureDetector() {
-    return this;
-  }
-
-  /**
    * Gets the utility used by {@link BaseGestureRecognizer} subclasses to retain/release pointer Ids
    * so that each pointer can only be used in one gesture at a time.
    */
@@ -104,7 +95,6 @@ public class TransformationSystem implements TransformationGestureDetector {
    * Gets the gesture recognizer for determining when the user performs a drag motion on the touch
    * screen.
    */
-  @Override
   public DragGestureRecognizer getDragRecognizer() {
     return dragGestureRecognizer;
   }
@@ -113,7 +103,6 @@ public class TransformationSystem implements TransformationGestureDetector {
    * Gets the gesture recognizer for determining when the user performs a two-finger pinch motion on
    * the touch screen.
    */
-  @Override
   public PinchGestureRecognizer getPinchRecognizer() {
     return pinchGestureRecognizer;
   }
@@ -122,7 +111,6 @@ public class TransformationSystem implements TransformationGestureDetector {
    * Gets the gesture recognizer for determining when the user performs a two-finger twist motion on
    * the touch screen.
    */
-  @Override
   public TwistGestureRecognizer getTwistRecognizer() {
     return twistGestureRecognizer;
   }
@@ -167,7 +155,6 @@ public class TransformationSystem implements TransformationGestureDetector {
   }
 
   /** Dispatches touch events to the gesture recognizers contained by this transformation system. */
-  @Override
   public void onTouch(HitTestResult hitTestResult, MotionEvent motionEvent) {
     for (int i = 0; i < recognizers.size(); i++) {
       recognizers.get(i).onTouch(hitTestResult, motionEvent);
