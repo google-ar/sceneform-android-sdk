@@ -36,6 +36,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver.OnWindowFocusChangeListener;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
@@ -86,6 +87,9 @@ public abstract class BaseArFragment extends Fragment
   private boolean isStarted;
   private boolean canRequestDangerousPermissions = true;
   @Nullable private OnTapArPlaneListener onTapArPlaneListener;
+
+  @SuppressWarnings({"initialization"})
+  private final OnWindowFocusChangeListener onFocusListener = this::onWindowFocusChanged;
 
   /** Gets the ArSceneView for this fragment. */
   public ArSceneView getArSceneView() {
@@ -163,11 +167,14 @@ public abstract class BaseArFragment extends Fragment
     }
 
     // Make the app immersive and don't turn off the display.
-    arSceneView
-        .getViewTreeObserver()
-        .addOnWindowFocusChangeListener(hasFocus -> onWindowFocusChanged(hasFocus));
-
+    arSceneView.getViewTreeObserver().addOnWindowFocusChangeListener(onFocusListener);
     return frameLayout;
+  }
+
+  @Override
+  public void onDestroyView() {
+    super.onDestroyView();
+    arSceneView.getViewTreeObserver().removeOnWindowFocusChangeListener(onFocusListener);
   }
 
   /**
@@ -497,3 +504,4 @@ public abstract class BaseArFragment extends Fragment
     }
   }
 }
+
