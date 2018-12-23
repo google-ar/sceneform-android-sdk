@@ -404,23 +404,23 @@ public class SolarActivity extends AppCompatActivity {
     sunVisual.setOnTapListener(
         (hitTestResult, motionEvent) -> solarControls.setEnabled(!solarControls.isEnabled()));
 
-    createPlanet("Mercury", sun, 0.4f, 47f, mercuryRenderable, 0.019f);
+    createPlanet("Mercury", sun, 0.4f, 47f, mercuryRenderable, 0.019f, 0.03f);
 
-    createPlanet("Venus", sun, 0.7f, 35f, venusRenderable, 0.0475f);
+    createPlanet("Venus", sun, 0.7f, 35f, venusRenderable, 0.0475f, 2.64f);
 
-    Node earth = createPlanet("Earth", sun, 1.0f, 29f, earthRenderable, 0.05f);
+    Node earth = createPlanet("Earth", sun, 1.0f, 29f, earthRenderable, 0.05f, 23.4f);
 
-    createPlanet("Moon", earth, 0.15f, 100f, lunaRenderable, 0.018f);
+    createPlanet("Moon", earth, 0.15f, 100f, lunaRenderable, 0.018f, 6.68f);
 
-    createPlanet("Mars", sun, 1.5f, 24f, marsRenderable, 0.0265f);
+    createPlanet("Mars", sun, 1.5f, 24f, marsRenderable, 0.0265f, 25.19f);
 
-    createPlanet("Jupiter", sun, 2.2f, 13f, jupiterRenderable, 0.16f);
+    createPlanet("Jupiter", sun, 2.2f, 13f, jupiterRenderable, 0.16f, 3.13f);
 
-    createPlanet("Saturn", sun, 3.5f, 9f, saturnRenderable, 0.1325f);
+    createPlanet("Saturn", sun, 3.5f, 9f, saturnRenderable, 0.1325f, 26.73f);
 
-    createPlanet("Uranus", sun, 5.2f, 7f, uranusRenderable, 0.1f);
+    createPlanet("Uranus", sun, 5.2f, 7f, uranusRenderable, 0.1f, 82.23f);
 
-    createPlanet("Neptune", sun, 6.1f, 5f, neptuneRenderable, 0.074f);
+    createPlanet("Neptune", sun, 6.1f, 5f, neptuneRenderable, 0.074f, 28.32f);
 
     return base;
   }
@@ -431,16 +431,17 @@ public class SolarActivity extends AppCompatActivity {
       float auFromParent,
       float orbitDegreesPerSecond,
       ModelRenderable renderable,
-      float planetScale) {
+      float planetScale,
+      float axisTilt) {
     // Orbit is a rotating node with no renderable positioned at the sun.
     // The planet is positioned relative to the orbit so that it appears to rotate around the sun.
     // This is done instead of making the sun rotate so each planet can orbit at its own speed.
-    RotatingNode orbit = new RotatingNode(solarSettings, true);
+    RotatingNode orbit = new RotatingNode(solarSettings, true, false, 0);
     orbit.setDegreesPerSecond(orbitDegreesPerSecond);
     orbit.setParent(parent);
 
     // Create the planet and position it relative to the sun.
-    Planet planet = new Planet(this, name, planetScale, renderable, solarSettings);
+    Planet planet = new Planet(this, name, planetScale, orbitDegreesPerSecond, axisTilt, renderable, solarSettings);
     planet.setParent(orbit);
     planet.setLocalPosition(new Vector3(auFromParent * AU_TO_METERS, 0.0f, 0.0f));
 
