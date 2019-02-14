@@ -32,11 +32,16 @@ public class RotatingNode extends Node {
 
   private final SolarSettings solarSettings;
   private final boolean isOrbit;
+  private final boolean clockwise;
+  private final float axisTiltDeg;
   private float lastSpeedMultiplier = 1.0f;
 
-  public RotatingNode(SolarSettings solarSettings, boolean isOrbit) {
+  public RotatingNode(
+      SolarSettings solarSettings, boolean isOrbit, boolean clockwise, float axisTiltDeg) {
     this.solarSettings = solarSettings;
     this.isOrbit = isOrbit;
+    this.clockwise = clockwise;
+    this.axisTiltDeg = axisTiltDeg;
   }
 
   @Override
@@ -99,7 +104,8 @@ public class RotatingNode extends Node {
     if (orbitAnimation != null) {
       return;
     }
-    orbitAnimation = createAnimator();
+
+    orbitAnimation = createAnimator(clockwise, axisTiltDeg);
     orbitAnimation.setTarget(this);
     orbitAnimation.setDuration(getAnimationDuration());
     orbitAnimation.start();
@@ -114,16 +120,24 @@ public class RotatingNode extends Node {
   }
 
   /** Returns an ObjectAnimator that makes this node rotate. */
-  private static ObjectAnimator createAnimator() {
+  private static ObjectAnimator createAnimator(boolean clockwise, float axisTiltDeg) {
     // Node's setLocalRotation method accepts Quaternions as parameters.
     // First, set up orientations that will animate a circle.
-    Quaternion orientation1 = Quaternion.axisAngle(new Vector3(0.0f, 1.0f, 0.0f), 0);
-    Quaternion orientation2 = Quaternion.axisAngle(new Vector3(0.0f, 1.0f, 0.0f), 120);
-    Quaternion orientation3 = Quaternion.axisAngle(new Vector3(0.0f, 1.0f, 0.0f), 240);
-    Quaternion orientation4 = Quaternion.axisAngle(new Vector3(0.0f, 1.0f, 0.0f), 360);
+    Quaternion[] orientations = new Quaternion[4];
+    // Rotation to apply first, to tilt its axis.
+    Quaternion baseOrientation = Quaternion.axisAngle(new Vector3(1.0f, 0f, 0.0f), axisTiltDeg);
+    for (int i = 0; i < orientations.length; i++) {
+      float angle = i * 360 / (orientations.length - 1);
+      if (clockwise) {
+        angle = 360 - angle;
+      }
+      Quaternion orientation = Quaternion.axisAngle(new Vector3(0.0f, 1.0f, 0.0f), angle);
+      orientations[i] = Quaternion.multiply(baseOrientation, orientation);
+    }
 
     ObjectAnimator orbitAnimation = new ObjectAnimator();
-    orbitAnimation.setObjectValues(orientation1, orientation2, orientation3, orientation4);
+    // Cast to Object[] to make sure the varargs overload is called.
+    orbitAnimation.setObjectValues((Object[]) orientations);
 
     // Next, give it the localRotation property.
     orbitAnimation.setPropertyName("localRotation");

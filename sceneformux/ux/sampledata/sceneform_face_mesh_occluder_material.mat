@@ -1,0 +1,14 @@
+material {
+    "name" : "Face Mesh Occluder",
+
+    "parameters" : [
+        {
+            "type" : "float",
+            "name" : "unused"
+        }
+    ],
+
+    "shadingModel" : "unlit",
+    "colorWrite" : false,
+    "depthWrite" : true,
+}

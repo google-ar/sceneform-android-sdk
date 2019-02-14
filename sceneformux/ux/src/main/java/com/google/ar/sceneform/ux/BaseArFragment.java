@@ -36,6 +36,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver.OnWindowFocusChangeListener;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
@@ -47,8 +48,13 @@ import com.google.ar.core.Plane;
 import com.google.ar.core.Session;
 import com.google.ar.core.Trackable;
 import com.google.ar.core.TrackingState;
+
 import com.google.ar.core.exceptions.CameraNotAvailableException;
+import com.google.ar.core.exceptions.UnavailableApkTooOldException;
+import com.google.ar.core.exceptions.UnavailableArcoreNotInstalledException;
+import com.google.ar.core.exceptions.UnavailableDeviceNotCompatibleException;
 import com.google.ar.core.exceptions.UnavailableException;
+import com.google.ar.core.exceptions.UnavailableSdkTooOldException;
 import com.google.ar.sceneform.ArSceneView;
 import com.google.ar.sceneform.FrameTime;
 import com.google.ar.sceneform.HitTestResult;
@@ -56,6 +62,7 @@ import com.google.ar.sceneform.Scene;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /** The AR fragment brings in the required view layout and controllers for common AR features. */
 public abstract class BaseArFragment extends Fragment
@@ -86,6 +93,10 @@ public abstract class BaseArFragment extends Fragment
   private boolean isStarted;
   private boolean canRequestDangerousPermissions = true;
   @Nullable private OnTapArPlaneListener onTapArPlaneListener;
+
+  @SuppressWarnings({"initialization"})
+  private final OnWindowFocusChangeListener onFocusListener =
+      (hasFocus -> onWindowFocusChanged(hasFocus));
 
   /** Gets the ArSceneView for this fragment. */
   public ArSceneView getArSceneView() {
@@ -163,11 +174,14 @@ public abstract class BaseArFragment extends Fragment
     }
 
     // Make the app immersive and don't turn off the display.
-    arSceneView
-        .getViewTreeObserver()
-        .addOnWindowFocusChangeListener(hasFocus -> onWindowFocusChanged(hasFocus));
-
+    arSceneView.getViewTreeObserver().addOnWindowFocusChangeListener(onFocusListener);
     return frameLayout;
+  }
+
+  @Override
+  public void onDestroyView() {
+    super.onDestroyView();
+    arSceneView.getViewTreeObserver().removeOnWindowFocusChangeListener(onFocusListener);
   }
 
   /**
@@ -326,7 +340,8 @@ public abstract class BaseArFragment extends Fragment
           case INSTALLED:
             break;
         }
-        Session session = new Session(requireActivity());
+
+        Session session = createSession();
 
         Config config = getSessionConfiguration(session);
         // Force the non-blocking mode for the session.
@@ -347,6 +362,23 @@ public abstract class BaseArFragment extends Fragment
     } else {
       requestDangerousPermissions();
     }
+  }
+
+  private Session createSession()
+      throws UnavailableSdkTooOldException, UnavailableDeviceNotCompatibleException,
+          UnavailableArcoreNotInstalledException, UnavailableApkTooOldException {
+    Session session = createSessionWithFeatures();
+    if (session == null) {
+      session = new Session(requireActivity());
+    }
+    return session;
+  }
+
+  
+  Session createSessionWithFeatures()
+      throws UnavailableSdkTooOldException, UnavailableDeviceNotCompatibleException,
+          UnavailableArcoreNotInstalledException, UnavailableApkTooOldException {
+    return new Session(requireActivity(), getSessionFeatures());
   }
 
   /**
@@ -387,6 +419,13 @@ public abstract class BaseArFragment extends Fragment
   protected abstract void handleSessionException(UnavailableException sessionException);
 
   protected abstract Config getSessionConfiguration(Session session);
+
+  /**
+   * Specifies additional features for creating an ARCore {@link com.google.ar.core.Session}. See
+   * {@link com.google.ar.core.Session.Feature}.
+   */
+  
+  protected abstract Set<Session.Feature> getSessionFeatures();
 
   protected void onWindowFocusChanged(boolean hasFocus) {
     FragmentActivity activity = getActivity();

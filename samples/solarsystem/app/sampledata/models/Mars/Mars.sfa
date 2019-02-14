@@ -163,5 +163,5 @@
       pipeline_name: 'Mars_Atmosphere_Mat_baseColor.png',
     },
   ],
-  version: '0.51:1',
+  version: '0.54:1',
 }

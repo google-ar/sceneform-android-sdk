@@ -19,11 +19,14 @@ import android.util.Log;
 import android.widget.Toast;
 import com.google.ar.core.Config;
 import com.google.ar.core.Session;
+
 import com.google.ar.core.exceptions.UnavailableApkTooOldException;
 import com.google.ar.core.exceptions.UnavailableArcoreNotInstalledException;
 import com.google.ar.core.exceptions.UnavailableDeviceNotCompatibleException;
 import com.google.ar.core.exceptions.UnavailableException;
 import com.google.ar.core.exceptions.UnavailableSdkTooOldException;
+import java.util.Collections;
+import java.util.Set;
 
 /**
  * Implements AR Required ArFragment. Does not require additional permissions and uses the default
@@ -64,5 +67,11 @@ public class ArFragment extends BaseArFragment {
   @Override
   protected Config getSessionConfiguration(Session session) {
     return new Config(session);
+  }
+
+  
+  @Override
+  protected Set<Session.Feature> getSessionFeatures() {
+    return Collections.emptySet();
   }
 }

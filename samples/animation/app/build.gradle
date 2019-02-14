@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.google.ar.sceneform.samples.animation"
+        minSdkVersion 24
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    // Sceneform
+    implementation "com.google.ar.sceneform.ux:sceneform-ux:1.7.0"
+    implementation "com.google.ar.sceneform:animation:1.7.0"
+    implementation 'com.android.support:design:28.0.0'
+}
+
+apply plugin: 'com.google.ar.sceneform.plugin'
+
+sceneform.asset('sampledata/models/andy_dance.fbx',
+        'default',
+        'sampledata/models/andy_dance.sfa',
+        'src/main/res/raw/andy_dance',
+        ['sampledata/models/andy_wave_r.fbx', 'sampledata/models/andy_wave_l.fbx'])
+
+sceneform.asset('sampledata/models/baseball-cap.gltf',
+        'default',
+        'sampledata/models/baseball-cap.sfa',
+        'src/main/res/raw/baseball_cap')

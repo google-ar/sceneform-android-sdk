@@ -1,0 +1,81 @@
+{
+  materials: [
+    {
+      name: 'lambert2SG',
+      parameters: [
+        {
+          baseColorFactor: [
+            0.029999999999999999,
+            0.029999999999999999,
+            0.070000000000000007,
+            1,
+          ],
+        },
+        {
+          baseColor: null,
+        },
+        {
+          diffuseColorFactor: null,
+        },
+        {
+          diffuseColor: null,
+        },
+        {
+          normal: null,
+        },
+        {
+          metallicFactor: 0,
+        },
+        {
+          roughnessFactor: 0.96994800000000003,
+        },
+        {
+          specularFactor: null,
+        },
+        {
+          glossinessFactor: null,
+        },
+        {
+          specularGlossiness: null,
+        },
+        {
+          specularGlossinessCalculation: null,
+        },
+        {
+          metallicRoughness: null,
+        },
+        {
+          occlusion: null,
+        },
+        {
+          emissiveFactor: [
+            0,
+            0,
+            0,
+            1,
+          ],
+        },
+        {
+          emissive: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/gltf_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/models/baseball-cap.gltf',
+    name: 'baseball-cap',
+    recenter: 'root',
+    scale: 0.12,
+  },
+  version: '0.54:1',
+}

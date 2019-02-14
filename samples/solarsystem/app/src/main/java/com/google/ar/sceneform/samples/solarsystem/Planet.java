@@ -43,6 +43,8 @@ import com.google.ar.sceneform.rendering.ViewRenderable;
 public class Planet extends Node implements Node.OnTapListener {
   private final String planetName;
   private final float planetScale;
+  private final float orbitDegreesPerSecond;
+  private final float axisTilt;
   private final ModelRenderable planetRenderable;
   private final SolarSettings solarSettings;
 
@@ -56,11 +58,15 @@ public class Planet extends Node implements Node.OnTapListener {
       Context context,
       String planetName,
       float planetScale,
+      float orbitDegreesPerSecond,
+      float axisTilt,
       ModelRenderable planetRenderable,
       SolarSettings solarSettings) {
     this.context = context;
     this.planetName = planetName;
     this.planetScale = planetScale;
+    this.orbitDegreesPerSecond = orbitDegreesPerSecond;
+    this.axisTilt = axisTilt;
     this.planetRenderable = planetRenderable;
     this.solarSettings = solarSettings;
     setOnTapListener(this);
@@ -96,8 +102,15 @@ public class Planet extends Node implements Node.OnTapListener {
     }
 
     if (planetVisual == null) {
-      planetVisual = new RotatingNode(solarSettings, false);
-      planetVisual.setParent(this);
+      // Put a rotator to counter the effects of orbit, and allow the planet orientation to remain
+      // of planets like Uranus (which has high tilt) to keep tilted towards the same direction
+      // wherever it is in its orbit.
+      RotatingNode counterOrbit = new RotatingNode(solarSettings, true, true, 0f);
+      counterOrbit.setDegreesPerSecond(orbitDegreesPerSecond);
+      counterOrbit.setParent(this);
+
+      planetVisual = new RotatingNode(solarSettings, false, false, axisTilt);
+      planetVisual.setParent(counterOrbit);
       planetVisual.setRenderable(planetRenderable);
       planetVisual.setLocalScale(new Vector3(planetScale, planetScale, planetScale));
     }
