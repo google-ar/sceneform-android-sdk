@@ -87,7 +87,7 @@ public class ScaleController extends BaseTransformationController<PinchGesture> 
 
   @Override
   public void onUpdated(Node node, FrameTime frameTime) {
-    if (isTransforming()) {
+    if (isTransforming() || !isEnabled()) {
       return;
     }
 

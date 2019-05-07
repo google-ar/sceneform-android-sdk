@@ -37,8 +37,8 @@ import com.google.ar.sceneform.rendering.RenderableDefinition.Submesh;
 import com.google.ar.sceneform.rendering.Texture;
 import com.google.ar.sceneform.rendering.Vertex;
 import com.google.ar.sceneform.rendering.Vertex.UvCoordinate;
-import java.nio.CharBuffer;
 import java.nio.FloatBuffer;
+import java.nio.ShortBuffer;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
@@ -372,7 +372,7 @@ public class AugmentedFaceNode extends Node {
       vertices.remove(vertices.size() - 1);
     }
 
-    CharBuffer indicesBuffer = augmentedFace.getMeshTriangleIndices();
+    ShortBuffer indicesBuffer = augmentedFace.getMeshTriangleIndices();
     indicesBuffer.rewind();
 
     // Only do this if the size doesn't match.

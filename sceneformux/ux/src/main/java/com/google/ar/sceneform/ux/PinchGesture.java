@@ -71,6 +71,12 @@ public class PinchGesture extends BaseGesture<PinchGesture> {
     return gesturePointersUtility.pixelsToInches(getGapDelta());
   }
 
+  /** Cancels the gesture in progress. */
+  @Override
+  public void cancel() {
+    super.cancel();
+  }
+
   @Override
   protected boolean canStart(HitTestResult hitTestResult, MotionEvent motionEvent) {
     if (gesturePointersUtility.isPointerIdRetained(pointerId1)

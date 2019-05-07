@@ -139,8 +139,8 @@ public class AugmentedFacesActivity extends AppCompatActivity {
   public static boolean checkIsSupportedDeviceOrFinish(final Activity activity) {
     if (ArCoreApk.getInstance().checkAvailability(activity)
         == ArCoreApk.Availability.UNSUPPORTED_DEVICE_NOT_CAPABLE) {
-      Log.e(TAG, "Augmented Faces requires ArCore.");
-      Toast.makeText(activity, "Augmented Faces requires ArCore", Toast.LENGTH_LONG).show();
+      Log.e(TAG, "Augmented Faces requires ARCore.");
+      Toast.makeText(activity, "Augmented Faces requires ARCore", Toast.LENGTH_LONG).show();
       activity.finish();
       return false;
     }
