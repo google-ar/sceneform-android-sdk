@@ -18,7 +18,9 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
+
 /** This drives the AR hand motion animation. */
+
 public class HandMotionAnimation extends Animation {
   private final View handImageView;
   private final View containerView;

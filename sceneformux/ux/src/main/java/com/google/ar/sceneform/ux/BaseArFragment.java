@@ -139,7 +139,9 @@ public abstract class BaseArFragment extends Fragment
 
     // Setup the instructions view.
     View instructionsView = loadPlaneDiscoveryView(inflater, container);
-    frameLayout.addView(instructionsView);
+    if (instructionsView != null) {
+      frameLayout.addView(instructionsView);
+    }
     planeDiscoveryController = new PlaneDiscoveryController(instructionsView);
 
     if (Build.VERSION.SDK_INT < VERSION_CODES.N) {
@@ -313,6 +315,18 @@ public abstract class BaseArFragment extends Fragment
     start();
   }
 
+  
+  protected final boolean requestInstall() throws UnavailableException {
+    switch (ArCoreApk.getInstance().requestInstall(requireActivity(), !installRequested)) {
+      case INSTALL_REQUESTED:
+        installRequested = true;
+        return true;
+      case INSTALLED:
+        break;
+    }
+    return false;
+  }
+
   /**
    * Initializes the ARCore session. The CAMERA permission is checked before checking the
    * installation state of ARCore. Once the permissions and installation are OK, the method
@@ -333,12 +347,8 @@ public abstract class BaseArFragment extends Fragment
 
       UnavailableException sessionException = null;
       try {
-        switch (ArCoreApk.getInstance().requestInstall(requireActivity(), !installRequested)) {
-          case INSTALL_REQUESTED:
-            installRequested = true;
-            return;
-          case INSTALLED:
-            break;
+        if (requestInstall()) {
+          return;
         }
 
         Session session = createSession();
@@ -385,13 +395,20 @@ public abstract class BaseArFragment extends Fragment
    * Creates the transformation system used by this fragment. Can be overridden to create a custom
    * transformation system.
    */
-  @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
   protected TransformationSystem makeTransformationSystem() {
     FootprintSelectionVisualizer selectionVisualizer = new FootprintSelectionVisualizer();
 
     TransformationSystem transformationSystem =
         new TransformationSystem(getResources().getDisplayMetrics(), selectionVisualizer);
 
+    setupSelectionRenderable(selectionVisualizer);
+
+    return transformationSystem;
+  }
+
+  @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
+  
+  protected void setupSelectionRenderable(FootprintSelectionVisualizer selectionVisualizer) {
     ModelRenderable.builder()
         .setSource(getActivity(), R.raw.sceneform_footprint)
         .build()
@@ -412,8 +429,6 @@ public abstract class BaseArFragment extends Fragment
               toast.show();
               return null;
             });
-
-    return transformationSystem;
   }
 
   protected abstract void handleSessionException(UnavailableException sessionException);
@@ -510,6 +525,8 @@ public abstract class BaseArFragment extends Fragment
   }
 
   // Load the default view we use for the plane discovery instructions.
+  @Nullable
+  
   private View loadPlaneDiscoveryView(LayoutInflater inflater, @Nullable ViewGroup container) {
     return inflater.inflate(R.layout.sceneform_plane_discovery_layout, container, false);
   }

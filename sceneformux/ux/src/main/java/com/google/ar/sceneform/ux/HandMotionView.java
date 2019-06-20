@@ -21,7 +21,9 @@ import android.util.AttributeSet;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;
 
+
 /** This view contains the hand motion instructions with animation. */
+
 public class HandMotionView extends AppCompatImageView {
   private HandMotionAnimation animation;
   private static final long ANIMATION_SPEED_MS = 2500;

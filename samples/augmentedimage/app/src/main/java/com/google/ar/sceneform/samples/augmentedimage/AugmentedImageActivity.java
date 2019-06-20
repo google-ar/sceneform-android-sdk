@@ -22,7 +22,6 @@ import android.view.View;
 import android.widget.ImageView;
 import com.google.ar.core.AugmentedImage;
 import com.google.ar.core.Frame;
-import com.google.ar.core.TrackingState;
 import com.google.ar.sceneform.FrameTime;
 import com.google.ar.sceneform.samples.common.helpers.SnackbarHelper;
 import com.google.ar.sceneform.ux.ArFragment;
@@ -33,6 +32,13 @@ import java.util.Map;
 /**
  * This application demonstrates using augmented images to place anchor nodes. app to include image
  * tracking functionality.
+ *
+ * <p>In this example, we assume all images are static or moving slowly with a large occupation of
+ * the screen. If the target is actively moving, we recommend to check
+ * ArAugmentedImage_getTrackingMethod() and render only when the tracking method equals to
+ * AR_AUGMENTED_IMAGE_TRACKING_METHOD_FULL_TRACKING. See details in <a
+ * href="https://developers.google.com/ar/develop/c/augmented-images/">Recognize and Augment
+ * Images</a>.
  */
 public class AugmentedImageActivity extends AppCompatActivity {
 
@@ -70,8 +76,8 @@ public class AugmentedImageActivity extends AppCompatActivity {
   private void onUpdateFrame(FrameTime frameTime) {
     Frame frame = arFragment.getArSceneView().getArFrame();
 
-    // If there is no frame or ARCore is not tracking yet, just return.
-    if (frame == null || frame.getCamera().getTrackingState() != TrackingState.TRACKING) {
+    // If there is no frame, just return.
+    if (frame == null) {
       return;
     }
 
