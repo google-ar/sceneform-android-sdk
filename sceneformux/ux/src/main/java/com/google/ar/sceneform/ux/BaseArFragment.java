@@ -25,11 +25,6 @@ import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -40,6 +35,13 @@ import android.view.ViewTreeObserver.OnWindowFocusChangeListener;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
 import com.google.ar.core.ArCoreApk;
 import com.google.ar.core.Config;
 import com.google.ar.core.Frame;
@@ -48,7 +50,6 @@ import com.google.ar.core.Plane;
 import com.google.ar.core.Session;
 import com.google.ar.core.Trackable;
 import com.google.ar.core.TrackingState;
-
 import com.google.ar.core.exceptions.CameraNotAvailableException;
 import com.google.ar.core.exceptions.UnavailableApkTooOldException;
 import com.google.ar.core.exceptions.UnavailableArcoreNotInstalledException;
@@ -60,6 +61,7 @@ import com.google.ar.sceneform.FrameTime;
 import com.google.ar.sceneform.HitTestResult;
 import com.google.ar.sceneform.Scene;
 import com.google.ar.sceneform.rendering.ModelRenderable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -315,7 +317,7 @@ public abstract class BaseArFragment extends Fragment
     start();
   }
 
-  
+
   protected final boolean requestInstall() throws UnavailableException {
     switch (ArCoreApk.getInstance().requestInstall(requireActivity(), !installRequested)) {
       case INSTALL_REQUESTED:
@@ -384,7 +386,7 @@ public abstract class BaseArFragment extends Fragment
     return session;
   }
 
-  
+
   Session createSessionWithFeatures()
       throws UnavailableSdkTooOldException, UnavailableDeviceNotCompatibleException,
           UnavailableArcoreNotInstalledException, UnavailableApkTooOldException {
@@ -407,7 +409,7 @@ public abstract class BaseArFragment extends Fragment
   }
 
   @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
-  
+
   protected void setupSelectionRenderable(FootprintSelectionVisualizer selectionVisualizer) {
     ModelRenderable.builder()
         .setSource(getActivity(), R.raw.sceneform_footprint)
@@ -439,7 +441,7 @@ public abstract class BaseArFragment extends Fragment
    * Specifies additional features for creating an ARCore {@link com.google.ar.core.Session}. See
    * {@link com.google.ar.core.Session.Feature}.
    */
-  
+
   protected abstract Set<Session.Feature> getSessionFeatures();
 
   protected void onWindowFocusChanged(boolean hasFocus) {
@@ -526,7 +528,7 @@ public abstract class BaseArFragment extends Fragment
 
   // Load the default view we use for the plane discovery instructions.
   @Nullable
-  
+
   private View loadPlaneDiscoveryView(LayoutInflater inflater, @Nullable ViewGroup container) {
     return inflater.inflate(R.layout.sceneform_plane_discovery_layout, container, false);
   }

@@ -15,7 +15,7 @@
  */
 package com.google.ar.sceneform.ux;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.Camera;
 import com.google.ar.core.Frame;

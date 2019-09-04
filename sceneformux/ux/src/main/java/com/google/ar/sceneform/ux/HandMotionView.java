@@ -16,7 +16,7 @@ package com.google.ar.sceneform.ux;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v7.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.animation.Animation;
 import android.widget.FrameLayout;

@@ -16,7 +16,7 @@
 package com.google.ar.sceneform.ux;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import com.google.ar.core.AugmentedFace;
 import com.google.ar.core.AugmentedFace.RegionType;

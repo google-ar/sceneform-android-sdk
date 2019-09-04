@@ -15,7 +15,7 @@
  */
 package com.google.ar.sceneform.ux;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.google.ar.sceneform.Node;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 

@@ -69,7 +69,7 @@ public class ArFragment extends BaseArFragment {
     return new Config(session);
   }
 
-  
+
   @Override
   protected Set<Session.Feature> getSessionFeatures() {
     return Collections.emptySet();
