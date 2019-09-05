@@ -24,12 +24,15 @@ public class TransformableNode extends BaseTransformableNode {
   private final ScaleController scaleController;
   private final RotationController rotationController;
 
+  private final DetectedARPlanes detectedARPlanes;
+
   @SuppressWarnings("initialization") // Suppress @UnderInitialization warning.
-  public TransformableNode(TransformationSystem transformationSystem) {
+  public TransformableNode(TransformationSystem transformationSystem, DetectedARPlanes detectedARPlanes) {
     super(transformationSystem);
+    this.detectedARPlanes = detectedARPlanes;
 
     translationController =
-        new TranslationController(this, transformationSystem.getDragRecognizer());
+        new TranslationController(this, transformationSystem.getDragRecognizer(), detectedARPlanes);
     addTransformationController(translationController);
 
     scaleController = new ScaleController(this, transformationSystem.getPinchRecognizer());
@@ -52,5 +55,9 @@ public class TransformableNode extends BaseTransformableNode {
   /** Returns the controller that rotates this node using a twist gesture. */
   public RotationController getRotationController() {
     return rotationController;
+  }
+
+  public DetectedARPlanes getDetectedARPlanes() {
+    return detectedARPlanes;
   }
 }
