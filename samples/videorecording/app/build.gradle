@@ -42,14 +42,14 @@ android {
 dependencies {
 
     // Provides ArFragment, and other Sceneform UX resources:
-    implementation "com.google.ar.sceneform.ux:sceneform-ux:1.11.0"
+    implementation "com.google.ar.sceneform.ux:sceneform-ux:1.12.0"
 
 
     // Use the Sceneform UX Package built from the source files included in the sceneformux folder.
     //api project(":sceneformux")
 
     // Alternatively, use ArSceneView without the UX dependency.
-    //implementation "com.google.ar.sceneform:core:1.11.0"
+    //implementation "com.google.ar.sceneform:core:1.12.0"
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
