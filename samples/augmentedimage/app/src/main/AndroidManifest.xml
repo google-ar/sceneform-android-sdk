@@ -17,10 +17,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.google.ar.sceneform.samples.augmentedimage">
+    <!-- "AR Required" apps must declare minSdkVersion ≥ 24.
+         "AR Optional" apps must declare minSdkVersion ≥ 14 -->
+  <!-- Sceneform requires OpenGLES 3.0 or later. -->
+  <uses-feature android:glEsVersion="0x00030000" android:required="true" />
+  <!-- Always needed for AR. -->
 
   <uses-permission android:name="android.permission.CAMERA"/>
-  <!-- This tag indicates that this application requires ARCore.  This results in the application
-       only being visible in the Google Play Store on devices that support ARCore. -->
+  <!-- Indicates that this app requires Google Play Services for AR ("AR Required") and results in
+       the app only being visible in the Google Play Store on devices that support ARCore.
+       For an "AR Optional" app, remove this tag. -->
   <uses-feature android:name="android.hardware.camera.ar" android:required="true"/>
 
   <application
@@ -42,8 +48,9 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
-    <!-- This tag indicates that this application requires ARCore.  This results in the Google Play
-         Store downloading and installing ARCore along with the application. -->
+    <!-- Indicates that this app requires Google Play Services for AR ("AR Required") and causes
+         the Google Play Store to download and intall Google Play Services for AR along with
+         the app. For an "AR Optional" app, specify "optional" instead of "required". -->
     <meta-data android:name="com.google.ar.core" android:value="required" />
   </application>
 </manifest>

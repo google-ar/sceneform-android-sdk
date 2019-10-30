@@ -44,7 +44,7 @@ dependencies {
     implementation "com.android.support:design:28.0.0"
 
     // Use the Sceneform UX Package pre-built from Maven.
-    implementation "com.google.ar.sceneform.ux:sceneform-ux:1.12.0"
+    implementation "com.google.ar.sceneform.ux:sceneform-ux:1.13.0"
 
     // Use the Sceneform UX Package built from the source files included in the sceneformux folder.
     //api project(":sceneformux")

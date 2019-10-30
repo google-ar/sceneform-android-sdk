@@ -27,6 +27,7 @@ import android.view.WindowManager;
 import android.widget.SeekBar;
 import android.widget.Toast;
 import com.google.ar.core.Anchor;
+import com.google.ar.core.Config;
 import com.google.ar.core.Frame;
 import com.google.ar.core.HitResult;
 import com.google.ar.core.Plane;
@@ -51,7 +52,7 @@ import java.util.concurrent.ExecutionException;
  */
 public class SolarActivity extends AppCompatActivity {
   private static final int RC_PERMISSIONS = 0x123;
-  private boolean installRequested;
+  private boolean cameraPermissionRequested;
 
   private GestureDetector gestureDetector;
   private Snackbar loadingMessageSnackbar = null;
@@ -240,9 +241,14 @@ public class SolarActivity extends AppCompatActivity {
       // If the session wasn't created yet, don't resume rendering.
       // This can happen if ARCore needs to be updated or permissions are not granted yet.
       try {
-        Session session = DemoUtils.createArSession(this, installRequested);
+        Config.LightEstimationMode lightEstimationMode =
+            Config.LightEstimationMode.ENVIRONMENTAL_HDR;
+        Session session =
+            cameraPermissionRequested
+                ? DemoUtils.createArSessionWithInstallRequest(this, lightEstimationMode)
+                : DemoUtils.createArSessionNoInstallRequest(this, lightEstimationMode);
         if (session == null) {
-          installRequested = DemoUtils.hasCameraPermission(this);
+          cameraPermissionRequested = DemoUtils.hasCameraPermission(this);
           return;
         } else {
           arSceneView.setupSession(session);

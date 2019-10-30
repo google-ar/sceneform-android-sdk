@@ -77,25 +77,15 @@ public class DemoUtils {
             });
   }
 
-  /**
-   * Creates an ARCore session. This checks for the CAMERA permission, and if granted, checks the
-   * state of the ARCore installation. If there is a problem an exception is thrown. Care must be
-   * taken to update the installRequested flag as needed to avoid an infinite checking loop. It
-   * should be set to true if null is returned from this method, and called again when the
-   * application is resumed.
-   *
-   * @param activity - the activity currently active.
-   * @param installRequested - the indicator for ARCore that when checking the state of ARCore, if
-   *     an installation was already requested. This is true if this method previously returned
-   *     null. and the camera permission has been granted.
-   */
-  public static Session createArSession(Activity activity, boolean installRequested)
+  private static Session createArSession(
+      Activity activity, boolean installRequested, Config.LightEstimationMode lightEstimationMode)
       throws UnavailableException {
     Session session = null;
     // if we have the camera permission, create the session
     if (hasCameraPermission(activity)) {
       switch (ArCoreApk.getInstance().requestInstall(activity, !installRequested)) {
         case INSTALL_REQUESTED:
+          installRequested = true;
           return null;
         case INSTALLED:
           break;
@@ -104,9 +94,43 @@ public class DemoUtils {
       // IMPORTANT!!!  ArSceneView requires the `LATEST_CAMERA_IMAGE` non-blocking update mode.
       Config config = new Config(session);
       config.setUpdateMode(Config.UpdateMode.LATEST_CAMERA_IMAGE);
+      config.setLightEstimationMode(lightEstimationMode);
       session.configure(config);
     }
     return session;
+  }
+
+  /**
+   * Creates an ARCore session, requesting ARCore installation if necessary. This checks for the
+   * CAMERA permission, and if granted, checks the state of the ARCore installation and requests
+   * installation if not already installed. If there is a problem an exception is thrown. Care must
+   * be taken to update the installRequested flag as needed to avoid an infinite checking loop. It
+   * should be set to true if null is returned from this method, and called again when the
+   * application is resumed.
+   *
+   * @param activity - the activity currently active.
+   * @param lightEstimationMode - the light estimation mode to be set on the returned session.
+   */
+  public static Session createArSessionWithInstallRequest(
+      Activity activity, Config.LightEstimationMode lightEstimationMode)
+      throws UnavailableException {
+    return createArSession(activity, true, lightEstimationMode);
+  }
+
+  /**
+   * Creates an ARCore session, but does not install ARCore even if it is unavailable. This checks
+   * for the CAMERA permission, and if granted, checks the state of the ARCore installation. If
+   * there is a problem an exception is thrown. Care must be taken to update the installRequested
+   * flag as needed to avoid an infinite checking loop. It should be set to true if null is returned
+   * from this method, and called again when the application is resumed.
+   *
+   * @param activity - the activity currently active.
+   * @param lightEstimationMode - the light estimation mode to be set on the returned session.
+   */
+  public static Session createArSessionNoInstallRequest(
+      Activity activity, Config.LightEstimationMode lightEstimationMode)
+      throws UnavailableException {
+    return createArSession(activity, false, lightEstimationMode);
   }
 
   /** Check to see we have the necessary permissions for this app, and ask for them if we don't. */
