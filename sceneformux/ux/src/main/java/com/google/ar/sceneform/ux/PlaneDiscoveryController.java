@@ -23,7 +23,7 @@ import android.view.View;
  * planeDiscoveryView to override the default visual, or assign null to remove it.
  */
 public class PlaneDiscoveryController {
-  private @Nullable View planeDiscoveryView;
+  @Nullable private View planeDiscoveryView;
 
   public PlaneDiscoveryController(@Nullable View planeDiscoveryView) {
     this.planeDiscoveryView = planeDiscoveryView;
