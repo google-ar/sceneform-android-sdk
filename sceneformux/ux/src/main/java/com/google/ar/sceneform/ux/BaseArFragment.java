@@ -378,6 +378,10 @@ public abstract class BaseArFragment extends Fragment
 
         Session session = createSession();
 
+        if (this.onSessionInitializationListener != null) {
+          this.onSessionInitializationListener.onSessionInitialization(session);
+        }
+
         Config config = getSessionConfiguration(session);
         // Force the non-blocking mode for the session.
 
@@ -406,14 +410,15 @@ public abstract class BaseArFragment extends Fragment
     if (session == null) {
       session = new Session(requireActivity());
     }
-    if (this.onSessionInitializationListener != null) {
-      this.onSessionInitializationListener.onSessionInitialization(session);
-    }
     return session;
   }
 
+  /**
+   * Creates the ARCore Session with the with features defined in #getSessionFeatures. If this
+   * returns null, the Session will be created with the default features.
+   */
   
-  Session createSessionWithFeatures()
+  protected @Nullable Session createSessionWithFeatures()
       throws UnavailableSdkTooOldException, UnavailableDeviceNotCompatibleException,
           UnavailableArcoreNotInstalledException, UnavailableApkTooOldException {
     return new Session(requireActivity(), getSessionFeatures());
@@ -439,6 +444,7 @@ public abstract class BaseArFragment extends Fragment
   protected void setupSelectionRenderable(FootprintSelectionVisualizer selectionVisualizer) {
     ModelRenderable.builder()
         .setSource(getActivity(), R.raw.sceneform_footprint)
+        .setIsFilamentGltf(true)
         .build()
         .thenAccept(
             renderable -> {

@@ -39,14 +39,12 @@ android {
 }
 
 dependencies {
-    // Use the Sceneform SDK built from the source files included in the sceneformsrc folder.
-    api project(":sceneform")
+    api 'com.google.android.filament:filament-android:1.4.5'
+    api 'com.google.android.filament:gltfio-android:1.4.5'
+    implementation files("../libs/libsceneform_runtime_schemas.jar")
+
+    api "com.google.ar:core:1.16.0"
 
     implementation "com.android.support:appcompat-v7:28.0.0"
     implementation "com.android.support:design:28.0.0"
 }
-
-task compileUxAssets {
-}
-
-preBuild.dependsOn compileUxAssets
