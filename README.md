@@ -16,7 +16,7 @@ To get started with the Sceneform SDK, follow the ARCore [Android Quickstart](//
 
 ## API Reference
 
-See the [Sceneform API Reference](//developers.google.com/ar/reference/java/com/google/ar/sceneform/package-summary).
+See the [Sceneform API Reference](//developers.google.com/sceneform/reference/com/google/ar/sceneform/package-summary).
 
 
 ## Release Notes
