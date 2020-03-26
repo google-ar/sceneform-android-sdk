@@ -105,7 +105,7 @@ public class GltfActivity extends AppCompatActivity {
         .setSource(
             this,
             Uri.parse(
-                "FlightHelmet.gltf"))
+                "https://storage.googleapis.com/ar-answers-in-search-models/static/Tiger/model.glb"))
         .setIsFilamentGltf(true)
         .build()
         .thenAccept(
@@ -118,7 +118,7 @@ public class GltfActivity extends AppCompatActivity {
         .exceptionally(
             throwable -> {
               Toast toast =
-                  Toast.makeText(this, "Unable to load Flight Helmet renderable", Toast.LENGTH_LONG);
+                  Toast.makeText(this, "Unable to load Tiger renderable", Toast.LENGTH_LONG);
               toast.setGravity(Gravity.CENTER, 0, 0);
               toast.show();
               return null;
