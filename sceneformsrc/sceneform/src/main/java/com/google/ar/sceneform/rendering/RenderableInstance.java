@@ -140,7 +140,6 @@ public class RenderableInstance {
                 new Vector3(center[0], center[1], center[2]));
       }
 
-      ResourceLoader resourceLoader = new ResourceLoader(engine);
       Function<String, Uri> urlResolver = renderableData.urlResolver;
       for (String uri : createdAsset.getResourceUris()) {
         if (urlResolver == null) {
@@ -150,7 +149,7 @@ public class RenderableInstance {
         Uri dataUri = urlResolver.apply(uri);
         try {
           Callable<InputStream> callable = LoadHelper.fromUri(renderableData.context, dataUri);
-          resourceLoader.addResourceData(
+          renderableData.resourceLoader.addResourceData(
               uri, ByteBuffer.wrap(SceneformBufferUtils.inputStreamCallableToByteArray(callable)));
         } catch (Exception e) {
           Log.e(TAG, "Failed to download data uri " + dataUri, e);
