@@ -49,9 +49,7 @@ public class LoadRenderableFromFilamentGltfTask<T extends Renderable> {
             // Download byte buffer via thread pool
             () -> {
               try {
-                byte[] gltfByteBuffer =
-                    SceneformBufferUtils.inputStreamCallableToByteArray(inputStreamCreator);
-                return ByteBuffer.wrap(gltfByteBuffer);
+                return SceneformBufferUtils.inputStreamCallableToByteArray(inputStreamCreator);
               } catch (Exception e) {
                 throw new CompletionException(e);
               }
@@ -59,7 +57,12 @@ public class LoadRenderableFromFilamentGltfTask<T extends Renderable> {
             ThreadPools.getThreadPoolExecutor())
         .thenApplyAsync(
             gltfByteBuffer -> {
-              this.renderableData.gltfByteBuffer = gltfByteBuffer;
+              // Check for glb header
+              this.renderableData.isGltfBinary = gltfByteBuffer[0] == 0x67
+                      && gltfByteBuffer[1] == 0x6C
+                      && gltfByteBuffer[2] == 0x54
+                      && gltfByteBuffer[3] == 0x46;
+              this.renderableData.gltfByteBuffer = ByteBuffer.wrap(gltfByteBuffer);
               return renderable;
             },
             ThreadPools.getMainExecutor());
@@ -92,19 +95,7 @@ public class LoadRenderableFromFilamentGltfTask<T extends Renderable> {
     // Build uri to missing resource.
     String decodedMissingResPath = Preconditions.checkNotNull(decodedMissingResUri.getPath());
     Uri decodedParentUri = Uri.parse(Uri.decode(parentUri.toString()));
-    String scheme = Preconditions.checkNotNull(decodedParentUri.getScheme());
-    String authority = Preconditions.checkNotNull(decodedParentUri.getAuthority());
-    String path = Preconditions.checkNotNull(decodedParentUri.getPath());
-    // Remove root file
-    path = path.replace(Preconditions.checkNotNull(decodedParentUri.getLastPathSegment()), "");
-
-    Uri uri =
-        new Uri.Builder()
-            .scheme(scheme)
-            .authority(authority)
-            .path(path)
-            .appendPath(decodedMissingResPath)
-            .build();
+    Uri uri = decodedParentUri.buildUpon().appendPath("..").appendPath(decodedMissingResPath).build();
     // Normalize and return Uri.
     return Uri.parse(Uri.decode(URI.create(uri.toString()).normalize().toString()));
   }

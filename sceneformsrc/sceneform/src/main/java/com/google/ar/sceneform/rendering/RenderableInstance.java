@@ -29,6 +29,7 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 
+import java.nio.IntBuffer;
 import java.util.concurrent.Callable;
 import java.util.function.Function;
 
@@ -122,7 +123,8 @@ public class RenderableInstance {
               RenderableInternalFilamentAssetData.getMaterialProvider(),
               EntityManager.get());
 
-      FilamentAsset createdAsset = loader.createAssetFromBinary(renderableData.gltfByteBuffer);
+      FilamentAsset createdAsset = renderableData.isGltfBinary ? loader.createAssetFromBinary(renderableData.gltfByteBuffer)
+              : loader.createAssetFromJson(renderableData.gltfByteBuffer);
 
       if (createdAsset == null) {
         throw new IllegalStateException("Failed to load gltf");
@@ -139,7 +141,6 @@ public class RenderableInstance {
       }
 
       ResourceLoader resourceLoader = new ResourceLoader(engine);
-      Preconditions.checkState(createdAsset.getResourceUris().length == 0);
       Function<String, Uri> urlResolver = renderableData.urlResolver;
       for (String uri : createdAsset.getResourceUris()) {
         if (urlResolver == null) {

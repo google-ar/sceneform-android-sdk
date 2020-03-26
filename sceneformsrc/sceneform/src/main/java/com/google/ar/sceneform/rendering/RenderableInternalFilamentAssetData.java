@@ -27,6 +27,7 @@ public class RenderableInternalFilamentAssetData implements IRenderableInternalD
 
   Context context;
   Buffer gltfByteBuffer;
+  boolean isGltfBinary;
   ResourceLoader resourceLoader;
   @Nullable Function<String, Uri> urlResolver;
   static MaterialProvider materialProvider;
