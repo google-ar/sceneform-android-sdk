@@ -22,6 +22,10 @@ adding `glTF` support
 You can continue to use Sceneform 1.15.0 (or earlier). There is no requirement
 that you migrate to Sceneform 1.16.0.
 
+> Do not use the 1.17.0 `com.google.ar.sceneform.*`
+> [Maven artifacts](https://maven.google.com/).
+
+
 <table>
   <tr>
     <th>Sceneform SDK</th>
