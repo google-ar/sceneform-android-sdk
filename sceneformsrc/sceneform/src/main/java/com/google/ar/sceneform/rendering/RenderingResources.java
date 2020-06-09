@@ -15,7 +15,7 @@ final class RenderingResources {
     PLANE_SHADOW_MATERIAL,
     PLANE_MATERIAL,
     PLANE,
-    VIEW_RENDERABLE,
+    VIEW_RENDERABLE_MATERIAL,
   };
 
   
@@ -40,8 +40,8 @@ final class RenderingResources {
         return LoadHelper.rawResourceNameToIdentifier(context, "sceneform_plane_material");
       case PLANE:
         return LoadHelper.drawableResourceNameToIdentifier(context, "sceneform_plane");
-      case VIEW_RENDERABLE:
-        return LoadHelper.rawResourceNameToIdentifier(context, "sceneform_view_renderable");
+      case VIEW_RENDERABLE_MATERIAL:
+        return LoadHelper.rawResourceNameToIdentifier(context, "sceneform_view_material");
     }
     return 0;
   }
