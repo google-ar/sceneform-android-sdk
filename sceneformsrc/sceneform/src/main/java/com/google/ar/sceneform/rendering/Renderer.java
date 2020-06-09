@@ -154,7 +154,12 @@ public class Renderer implements UiHelper.RendererCallback {
 
   /** @hide */
   public void setClearColor(Color color) {
-    view.setClearColor(color.r, color.g, color.b, color.a);
+    com.google.android.filament.Renderer.ClearOptions options = new com.google.android.filament.Renderer.ClearOptions();
+    options.clearColor[0] = color.r;
+    options.clearColor[1] = color.g;
+    options.clearColor[2] = color.b;
+    options.clearColor[3] = color.a;
+    renderer.setClearOptions(options);
   }
 
   /** @hide */
@@ -275,7 +280,7 @@ public class Renderer implements UiHelper.RendererCallback {
           throw new AssertionError("Internal Error: Failed to get swap chain");
         }
 
-        if (renderer.beginFrame(swapChainLocal)) {
+        if (renderer.beginFrame(swapChainLocal, 0)) {
           if (preRenderCallback != null) {
             preRenderCallback.preRender(renderer, swapChainLocal, camera);
           }
@@ -411,7 +416,6 @@ public class Renderer implements UiHelper.RendererCallback {
     // TODO: This functionality should probably be exposed to the developer eventually.
     DynamicResolutionOptions options = new DynamicResolutionOptions();
     options.enabled = isEnabled;
-    options.targetFrameTimeMilli = 1000.0f / 30.0f;
     view.setDynamicResolutionOptions(options);
   }
 
@@ -554,7 +558,6 @@ public class Renderer implements UiHelper.RendererCallback {
 
     setDynamicResolutionEnabled(true);
 
-    emptyView.setClearColor(0, 0, 0, 1);
     emptyView.setCamera(engine.createCamera());
     emptyView.setScene(engine.createScene());
   }
