@@ -1,0 +1,25 @@
+material {
+    "name" : "Camera",
+
+    "parameters" : [
+        {
+           "type" : "samplerExternal",
+           "name" : "cameraTexture"
+        }
+    ],
+    "requires" : [
+        "uv0"
+    ],
+    "vertexDomain" : "device",
+    "depthWrite" : false,
+    "shadingModel" : "unlit",
+    "doubleSided" : true
+}
+fragment {
+    void material(inout MaterialInputs material) {
+        prepareMaterial(material);
+
+        vec4 color = texture(materialParams_cameraTexture, getUV0());
+        material.baseColor.rgb = inverseTonemapSRGB(color.rgb);
+    }
+}

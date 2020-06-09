@@ -17,8 +17,12 @@ import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.resources.ResourceRegistry;
 import com.google.ar.sceneform.utilities.AndroidPreconditions;
 import com.google.ar.sceneform.utilities.Preconditions;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.OptionalInt;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
 
 /**
  * Renders a 2D Android view in 3D space by attaching it to a {@link com.google.ar.sceneform.Node}
@@ -429,16 +433,60 @@ public class ViewRenderable extends Renderable {
     @SuppressWarnings("AndroidApiChecker") // java.util.concurrent.CompletableFuture
     public CompletableFuture<ViewRenderable> build() {
       if (!hasSource() && context != null) {
-        setSource(
-            context,
-            RenderingResources.GetSceneformResource(
-                context, RenderingResources.Resource.VIEW_RENDERABLE));
-      }
+        // For ViewRenderables, the registryId must come from the View, not the RCB source.
+        // If the source is a View, use that as the registryId. If the view is null, then the source
+        // is a resource id and the registryId should also be null.
+        registryId = view;
 
-      // For ViewRenderables, the registryId must come from the View, not the RCB source.
-      // If the source is a View, use that as the registryId. If the view is null, then the source
-      // is a resource id and the registryId should also be null.
-      registryId = view;
+        CompletableFuture<Void> setSourceFuture = Material.builder()
+                .setSource(
+                        context,
+                        RenderingResources.GetSceneformResource(
+                                context, RenderingResources.Resource.VIEW_RENDERABLE_MATERIAL))
+                .build()
+                .thenAccept(
+                        material -> {
+
+                          ArrayList<Vertex> vertices = new ArrayList<>();
+                          vertices.add(Vertex.builder()
+                                  .setPosition(new Vector3(-0.5f, 0.0f, 0.0f))
+                                  .setNormal(new Vector3(0.0f, 0.0f, 1.0f))
+                                  .setUvCoordinate(new Vertex.UvCoordinate(0.0f, 0.0f))
+                                  .build());
+                          vertices.add(Vertex.builder()
+                                  .setPosition(new Vector3(0.5f, 0.0f, 0.0f))
+                                  .setNormal(new Vector3(0.0f, 0.0f, 1.0f))
+                                  .setUvCoordinate(new Vertex.UvCoordinate(1.0f, 0.0f))
+                                  .build());
+                          vertices.add(Vertex.builder()
+                                  .setPosition(new Vector3(-0.5f, 1.0f, 0.0f))
+                                  .setNormal(new Vector3(0.0f, 0.0f, 1.0f))
+                                  .setUvCoordinate(new Vertex.UvCoordinate(0.0f, 1.0f))
+                                  .build());
+                          vertices.add(Vertex.builder()
+                                  .setPosition(new Vector3(0.5f, 1.0f, 0.0f))
+                                  .setNormal(new Vector3(0.0f, 0.0f, 1.0f))
+                                  .setUvCoordinate(new Vertex.UvCoordinate(1.0f, 1.0f))
+                                  .build());
+                          ArrayList<Integer> triangleIndices = new ArrayList<>();
+                          triangleIndices.add(0);
+                          triangleIndices.add(1);
+                          triangleIndices.add(2);
+                          triangleIndices.add(1);
+                          triangleIndices.add(3);
+                          triangleIndices.add(2);
+                          RenderableDefinition.Submesh submesh =
+                                  RenderableDefinition.Submesh.builder().setTriangleIndices(triangleIndices).setMaterial(material).build();
+                          setSource(
+                                  RenderableDefinition.builder()
+                                          .setVertices(vertices)
+                                          .setSubmeshes(Arrays.asList(submesh))
+                                          .build()
+                          );
+                        }
+                );
+        return setSourceFuture.thenCompose((Void) -> super.build());
+      }
 
       return super.build();
     }

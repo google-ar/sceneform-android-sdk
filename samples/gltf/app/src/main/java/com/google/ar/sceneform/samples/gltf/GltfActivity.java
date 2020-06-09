@@ -36,10 +36,13 @@ import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
 import com.google.ar.core.Plane;
 import com.google.ar.sceneform.AnchorNode;
+import com.google.ar.sceneform.Node;
+import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.Color;
 import com.google.ar.sceneform.rendering.Material;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.rendering.Renderable;
+import com.google.ar.sceneform.rendering.ViewRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 import java.lang.ref.WeakReference;
@@ -152,6 +155,24 @@ public class GltfActivity extends AppCompatActivity {
             Material material = renderable.getMaterial(i);
             material.setFloat4("baseColorFactor", color);
           }
+
+          Node tigerTitleNode = new Node();
+          tigerTitleNode.setParent(model);
+          tigerTitleNode.setEnabled(false);
+          tigerTitleNode.setLocalPosition(new Vector3(0.0f, 1.0f, 0.0f));
+          ViewRenderable.builder()
+                  .setView(this, R.layout.tiger_card_view)
+                  .build()
+                  .thenAccept(
+                          (renderable) -> {
+                              tigerTitleNode.setRenderable(renderable);
+                              tigerTitleNode.setEnabled(true);
+                          })
+                  .exceptionally(
+                          (throwable) -> {
+                              throw new AssertionError("Could not load card view.", throwable);
+                          }
+                  );
         });
 
     arFragment
