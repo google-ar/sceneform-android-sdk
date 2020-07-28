@@ -22,8 +22,8 @@ adding `glTF` support
 You can continue to use Sceneform 1.15.0 (or earlier). There is no requirement
 that you migrate to Sceneform 1.16.0.
 
-> Do not use the 1.17.0 `com.google.ar.sceneform.*`
-> [Maven artifacts](https://maven.google.com/).
+Do not use Sceneform 1.17.0 as that release will not work correctly. (Sceneform
+1.17.1 can be used, but is otherwise identical to Sceneform 1.15.0.)
 
 
 <table>
@@ -32,24 +32,39 @@ that you migrate to Sceneform 1.16.0.
     <th>Description</th>
   </tr>
   <tr>
-    <td>Sceneform for SDK<br>versions 1.0.0 - 1.15.0</td>
+    <td>Sceneform SDK<br>versions <b>1.0.0 - 1.15.0</b></td>
     <td>
       <ul>
         <li>Closed source</li>
         <li>Included in your project as an external Gradle dependency</li>
-        <li><code>FBX</code> and <code>OBJ</code> files can be converted to Sceneform's <code>SFA</code> and <code>SFB</code> Sceneform formats</li>
+        <li>
+          <code>FBX</code> and <code>OBJ</code> files can be converted to
+          Sceneform's <code>SFA</code> and <code>SFB</code> Sceneform
+          formats
+        </li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td>Sceneform for SDK<br>version 1.16.0</td>
+    <td>Sceneform SDK<br>version <b>1.16.0</b></td>
     <td>
       <ul>
         <li>Open source</li>
         <li>Built alongside an application as a Gradle module</li>
-        <li>Supports <a href="https://www.khronos.org/gltf/">glTF</a> instead of <code>SFA</code> and <code>SFB</code> Sceneform formats</li>
+        <li>
+          Supports <a href="https://www.khronos.org/gltf/">glTF</a> instead of
+          <code>SFA</code> and <code>SFB</code> Sceneform formats
+        </li>
       </ul>
     </td>
+  </tr>
+  <tr>
+    <td>Sceneform SDK<br>version <b>1.17.0</b></td>
+    <td>Do not use</td>
+  </tr>
+  <tr>
+    <td>Sceneform SDK<br>version <b>1.17.1</b></td>
+    <td>Identical to version 1.15.0</td>
   </tr>
 </table>
 
@@ -119,7 +134,8 @@ The SDK release notes are available on the
 ## License
 
 Please see the
-[LICENSE](https://github.com/google-ar/sceneform-android-sdk/blob/master/LICENSE) file.
+[LICENSE](https://github.com/google-ar/sceneform-android-sdk/blob/master/LICENSE)
+file.
 
 
 ## Brand Guidelines
